@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "YKKlineViewController.h"
 
 @interface ViewController ()
 
@@ -16,7 +17,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    YKKlineViewController *kLineVc = [[YKKlineViewController alloc] init];
+    kLineVc.view.frame = self.view.bounds;
+    [self addChildViewController:kLineVc];
+    [self.view addSubview:kLineVc.view];
 }
 
 

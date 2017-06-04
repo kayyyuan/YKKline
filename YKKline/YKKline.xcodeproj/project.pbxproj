@@ -7,25 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9470357E1EE40725003617BB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9470357D1EE40725003617BB /* main.m */; };
-		947035811EE40725003617BB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 947035801EE40725003617BB /* AppDelegate.m */; };
-		947035841EE40725003617BB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947035831EE40725003617BB /* ViewController.m */; };
 		947035871EE40725003617BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 947035851EE40725003617BB /* Main.storyboard */; };
 		947035891EE40725003617BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 947035881EE40725003617BB /* Assets.xcassets */; };
 		9470358C1EE40725003617BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9470358A1EE40725003617BB /* LaunchScreen.storyboard */; };
+		94F171981EE422CF00C81AFA /* YKCAShapeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F171931EE422CF00C81AFA /* YKCAShapeLayer.m */; };
+		94F171A91EE422E500C81AFA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F171A41EE422E500C81AFA /* AppDelegate.m */; };
+		94F171AA1EE422E500C81AFA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94F171A51EE422E500C81AFA /* Info.plist */; };
+		94F171AB1EE422E500C81AFA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F171A61EE422E500C81AFA /* main.m */; };
+		94F171AC1EE422E500C81AFA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F171A81EE422E500C81AFA /* ViewController.m */; };
+		94F171B01EE422EB00C81AFA /* YKKlineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F171AF1EE422EB00C81AFA /* YKKlineViewController.m */; };
+		94F171B61EE4236500C81AFA /* UIColor+YKKlineThemeColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F171B31EE4236500C81AFA /* UIColor+YKKlineThemeColor.m */; };
+		94F171B71EE4236500C81AFA /* YKKlineViewConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F171B51EE4236500C81AFA /* YKKlineViewConfig.m */; };
+		94F171BB1EE4249200C81AFA /* YKKlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F171BA1EE4249200C81AFA /* YKKlineView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		947035791EE40725003617BB /* YKKline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YKKline.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9470357D1EE40725003617BB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9470357F1EE40725003617BB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		947035801EE40725003617BB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		947035821EE40725003617BB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		947035831EE40725003617BB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		947035861EE40725003617BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		947035881EE40725003617BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9470358B1EE40725003617BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		9470358D1EE40725003617BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94F171921EE422CF00C81AFA /* YKCAShapeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKCAShapeLayer.h; sourceTree = "<group>"; };
+		94F171931EE422CF00C81AFA /* YKCAShapeLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKCAShapeLayer.m; sourceTree = "<group>"; };
+		94F171A31EE422E500C81AFA /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		94F171A41EE422E500C81AFA /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		94F171A51EE422E500C81AFA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94F171A61EE422E500C81AFA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		94F171A71EE422E500C81AFA /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		94F171A81EE422E500C81AFA /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		94F171AE1EE422EB00C81AFA /* YKKlineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKKlineViewController.h; sourceTree = "<group>"; };
+		94F171AF1EE422EB00C81AFA /* YKKlineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKKlineViewController.m; sourceTree = "<group>"; };
+		94F171B21EE4236500C81AFA /* UIColor+YKKlineThemeColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+YKKlineThemeColor.h"; sourceTree = "<group>"; };
+		94F171B31EE4236500C81AFA /* UIColor+YKKlineThemeColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+YKKlineThemeColor.m"; sourceTree = "<group>"; };
+		94F171B41EE4236500C81AFA /* YKKlineViewConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKKlineViewConfig.h; sourceTree = "<group>"; };
+		94F171B51EE4236500C81AFA /* YKKlineViewConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKKlineViewConfig.m; sourceTree = "<group>"; };
+		94F171B91EE4249200C81AFA /* YKKlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKKlineView.h; sourceTree = "<group>"; };
+		94F171BA1EE4249200C81AFA /* YKKlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKKlineView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,25 +74,92 @@
 		9470357B1EE40725003617BB /* YKKline */ = {
 			isa = PBXGroup;
 			children = (
-				9470357F1EE40725003617BB /* AppDelegate.h */,
-				947035801EE40725003617BB /* AppDelegate.m */,
-				947035821EE40725003617BB /* ViewController.h */,
-				947035831EE40725003617BB /* ViewController.m */,
+				94F171901EE422CF00C81AFA /* View */,
+				94F171A11EE422DE00C81AFA /* Model */,
+				94F171B11EE4236500C81AFA /* Other */,
+				94F171A21EE422E500C81AFA /* Demo */,
+				94F171AD1EE422EB00C81AFA /* Controller */,
 				947035851EE40725003617BB /* Main.storyboard */,
 				947035881EE40725003617BB /* Assets.xcassets */,
 				9470358A1EE40725003617BB /* LaunchScreen.storyboard */,
-				9470358D1EE40725003617BB /* Info.plist */,
-				9470357C1EE40725003617BB /* Supporting Files */,
 			);
 			path = YKKline;
 			sourceTree = "<group>";
 		};
-		9470357C1EE40725003617BB /* Supporting Files */ = {
+		94F171901EE422CF00C81AFA /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9470357D1EE40725003617BB /* main.m */,
+				94F171911EE422CF00C81AFA /* Extension */,
+				94F171B81EE4249200C81AFA /* YKKline */,
+				94F171971EE422CF00C81AFA /* YKTimeline */,
 			);
-			name = "Supporting Files";
+			path = View;
+			sourceTree = "<group>";
+		};
+		94F171911EE422CF00C81AFA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				94F171921EE422CF00C81AFA /* YKCAShapeLayer.h */,
+				94F171931EE422CF00C81AFA /* YKCAShapeLayer.m */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		94F171971EE422CF00C81AFA /* YKTimeline */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = YKTimeline;
+			sourceTree = "<group>";
+		};
+		94F171A11EE422DE00C81AFA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		94F171A21EE422E500C81AFA /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				94F171A31EE422E500C81AFA /* AppDelegate.h */,
+				94F171A41EE422E500C81AFA /* AppDelegate.m */,
+				94F171A51EE422E500C81AFA /* Info.plist */,
+				94F171A61EE422E500C81AFA /* main.m */,
+				94F171A71EE422E500C81AFA /* ViewController.h */,
+				94F171A81EE422E500C81AFA /* ViewController.m */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		94F171AD1EE422EB00C81AFA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				94F171AE1EE422EB00C81AFA /* YKKlineViewController.h */,
+				94F171AF1EE422EB00C81AFA /* YKKlineViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		94F171B11EE4236500C81AFA /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				94F171B21EE4236500C81AFA /* UIColor+YKKlineThemeColor.h */,
+				94F171B31EE4236500C81AFA /* UIColor+YKKlineThemeColor.m */,
+				94F171B41EE4236500C81AFA /* YKKlineViewConfig.h */,
+				94F171B51EE4236500C81AFA /* YKKlineViewConfig.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		94F171B81EE4249200C81AFA /* YKKline */ = {
+			isa = PBXGroup;
+			children = (
+				94F171B91EE4249200C81AFA /* YKKlineView.h */,
+				94F171BA1EE4249200C81AFA /* YKKlineView.m */,
+			);
+			name = YKKline;
+			path = Extension/YKKline;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +220,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94F171AA1EE422E500C81AFA /* Info.plist in Resources */,
 				9470358C1EE40725003617BB /* LaunchScreen.storyboard in Resources */,
 				947035891EE40725003617BB /* Assets.xcassets in Resources */,
 				947035871EE40725003617BB /* Main.storyboard in Resources */,
@@ -150,9 +234,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				947035841EE40725003617BB /* ViewController.m in Sources */,
-				947035811EE40725003617BB /* AppDelegate.m in Sources */,
-				9470357E1EE40725003617BB /* main.m in Sources */,
+				94F171B01EE422EB00C81AFA /* YKKlineViewController.m in Sources */,
+				94F171AC1EE422E500C81AFA /* ViewController.m in Sources */,
+				94F171BB1EE4249200C81AFA /* YKKlineView.m in Sources */,
+				94F171981EE422CF00C81AFA /* YKCAShapeLayer.m in Sources */,
+				94F171AB1EE422E500C81AFA /* main.m in Sources */,
+				94F171A91EE422E500C81AFA /* AppDelegate.m in Sources */,
+				94F171B71EE4236500C81AFA /* YKKlineViewConfig.m in Sources */,
+				94F171B61EE4236500C81AFA /* UIColor+YKKlineThemeColor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,7 +361,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = YKKline/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/YKKline/Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.-.YKKline";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -283,7 +373,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = YKKline/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/YKKline/Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.-.YKKline";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -309,6 +400,7 @@
 				947035921EE40725003617BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
