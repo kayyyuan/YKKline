@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		94560B771EE4E0B6005EA16A /* kLine.json in Resources */ = {isa = PBXBuildFile; fileRef = 94560B761EE4E0B6005EA16A /* kLine.json */; };
+		94560B7E1EE4E0D1005EA16A /* YKCandlePointModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94560B791EE4E0D1005EA16A /* YKCandlePointModel.m */; };
+		94560B7F1EE4E0D1005EA16A /* YKKLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94560B7B1EE4E0D1005EA16A /* YKKLineModel.m */; };
+		94560B801EE4E0D1005EA16A /* YKOriginalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94560B7D1EE4E0D1005EA16A /* YKOriginalModel.m */; };
+		94560B871EE4E0DB005EA16A /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94560B831EE4E0DB005EA16A /* NSObject+YYModel.m */; };
+		94560B881EE4E0DB005EA16A /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 94560B851EE4E0DB005EA16A /* YYClassInfo.m */; };
+		94560B8B1EE4ED4F005EA16A /* CAShapeLayer+YKOHLCLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 94560B8A1EE4ED4F005EA16A /* CAShapeLayer+YKOHLCLayer.m */; };
+		94560B8E1EE4ED96005EA16A /* CAShapeLayer+YKCandleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 94560B8D1EE4ED96005EA16A /* CAShapeLayer+YKCandleLayer.m */; };
+		94560B911EE4F592005EA16A /* CATextLayer+YKTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 94560B901EE4F592005EA16A /* CATextLayer+YKTextLayer.m */; };
+		94560B941EE4F9DF005EA16A /* CAShapeLayer+YKBorderLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 94560B931EE4F9DF005EA16A /* CAShapeLayer+YKBorderLayer.m */; };
 		947035871EE40725003617BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 947035851EE40725003617BB /* Main.storyboard */; };
 		947035891EE40725003617BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 947035881EE40725003617BB /* Assets.xcassets */; };
 		9470358C1EE40725003617BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9470358A1EE40725003617BB /* LaunchScreen.storyboard */; };
@@ -22,6 +32,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		94560B761EE4E0B6005EA16A /* kLine.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = kLine.json; sourceTree = "<group>"; };
+		94560B781EE4E0D1005EA16A /* YKCandlePointModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKCandlePointModel.h; sourceTree = "<group>"; };
+		94560B791EE4E0D1005EA16A /* YKCandlePointModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKCandlePointModel.m; sourceTree = "<group>"; };
+		94560B7A1EE4E0D1005EA16A /* YKKLineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKKLineModel.h; sourceTree = "<group>"; };
+		94560B7B1EE4E0D1005EA16A /* YKKLineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKKLineModel.m; sourceTree = "<group>"; };
+		94560B7C1EE4E0D1005EA16A /* YKOriginalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKOriginalModel.h; sourceTree = "<group>"; };
+		94560B7D1EE4E0D1005EA16A /* YKOriginalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKOriginalModel.m; sourceTree = "<group>"; };
+		94560B821EE4E0DB005EA16A /* NSObject+YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYModel.h"; sourceTree = "<group>"; };
+		94560B831EE4E0DB005EA16A /* NSObject+YYModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YYModel.m"; sourceTree = "<group>"; };
+		94560B841EE4E0DB005EA16A /* YYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYClassInfo.h; sourceTree = "<group>"; };
+		94560B851EE4E0DB005EA16A /* YYClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYClassInfo.m; sourceTree = "<group>"; };
+		94560B861EE4E0DB005EA16A /* YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYModel.h; sourceTree = "<group>"; };
+		94560B891EE4ED4F005EA16A /* CAShapeLayer+YKOHLCLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAShapeLayer+YKOHLCLayer.h"; sourceTree = "<group>"; };
+		94560B8A1EE4ED4F005EA16A /* CAShapeLayer+YKOHLCLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAShapeLayer+YKOHLCLayer.m"; sourceTree = "<group>"; };
+		94560B8C1EE4ED96005EA16A /* CAShapeLayer+YKCandleLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAShapeLayer+YKCandleLayer.h"; sourceTree = "<group>"; };
+		94560B8D1EE4ED96005EA16A /* CAShapeLayer+YKCandleLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAShapeLayer+YKCandleLayer.m"; sourceTree = "<group>"; };
+		94560B8F1EE4F592005EA16A /* CATextLayer+YKTextLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CATextLayer+YKTextLayer.h"; sourceTree = "<group>"; };
+		94560B901EE4F592005EA16A /* CATextLayer+YKTextLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CATextLayer+YKTextLayer.m"; sourceTree = "<group>"; };
+		94560B921EE4F9DF005EA16A /* CAShapeLayer+YKBorderLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAShapeLayer+YKBorderLayer.h"; sourceTree = "<group>"; };
+		94560B931EE4F9DF005EA16A /* CAShapeLayer+YKBorderLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAShapeLayer+YKBorderLayer.m"; sourceTree = "<group>"; };
 		947035791EE40725003617BB /* YKKline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YKKline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		947035861EE40725003617BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		947035881EE40725003617BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -55,6 +85,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		94560B811EE4E0DB005EA16A /* YYModel */ = {
+			isa = PBXGroup;
+			children = (
+				94560B821EE4E0DB005EA16A /* NSObject+YYModel.h */,
+				94560B831EE4E0DB005EA16A /* NSObject+YYModel.m */,
+				94560B841EE4E0DB005EA16A /* YYClassInfo.h */,
+				94560B851EE4E0DB005EA16A /* YYClassInfo.m */,
+				94560B861EE4E0DB005EA16A /* YYModel.h */,
+			);
+			path = YYModel;
+			sourceTree = "<group>";
+		};
 		947035701EE40725003617BB = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +143,14 @@
 			children = (
 				94F171921EE422CF00C81AFA /* YKCAShapeLayer.h */,
 				94F171931EE422CF00C81AFA /* YKCAShapeLayer.m */,
+				94560B891EE4ED4F005EA16A /* CAShapeLayer+YKOHLCLayer.h */,
+				94560B8A1EE4ED4F005EA16A /* CAShapeLayer+YKOHLCLayer.m */,
+				94560B8C1EE4ED96005EA16A /* CAShapeLayer+YKCandleLayer.h */,
+				94560B8D1EE4ED96005EA16A /* CAShapeLayer+YKCandleLayer.m */,
+				94560B8F1EE4F592005EA16A /* CATextLayer+YKTextLayer.h */,
+				94560B901EE4F592005EA16A /* CATextLayer+YKTextLayer.m */,
+				94560B921EE4F9DF005EA16A /* CAShapeLayer+YKBorderLayer.h */,
+				94560B931EE4F9DF005EA16A /* CAShapeLayer+YKBorderLayer.m */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -115,6 +165,14 @@
 		94F171A11EE422DE00C81AFA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				94560B811EE4E0DB005EA16A /* YYModel */,
+				94560B781EE4E0D1005EA16A /* YKCandlePointModel.h */,
+				94560B791EE4E0D1005EA16A /* YKCandlePointModel.m */,
+				94560B7A1EE4E0D1005EA16A /* YKKLineModel.h */,
+				94560B7B1EE4E0D1005EA16A /* YKKLineModel.m */,
+				94560B7C1EE4E0D1005EA16A /* YKOriginalModel.h */,
+				94560B7D1EE4E0D1005EA16A /* YKOriginalModel.m */,
+				94560B761EE4E0B6005EA16A /* kLine.json */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -220,6 +278,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94560B771EE4E0B6005EA16A /* kLine.json in Resources */,
 				94F171AA1EE422E500C81AFA /* Info.plist in Resources */,
 				9470358C1EE40725003617BB /* LaunchScreen.storyboard in Resources */,
 				947035891EE40725003617BB /* Assets.xcassets in Resources */,
@@ -234,14 +293,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94560B7E1EE4E0D1005EA16A /* YKCandlePointModel.m in Sources */,
+				94560B941EE4F9DF005EA16A /* CAShapeLayer+YKBorderLayer.m in Sources */,
 				94F171B01EE422EB00C81AFA /* YKKlineViewController.m in Sources */,
 				94F171AC1EE422E500C81AFA /* ViewController.m in Sources */,
+				94560B871EE4E0DB005EA16A /* NSObject+YYModel.m in Sources */,
 				94F171BB1EE4249200C81AFA /* YKKlineView.m in Sources */,
+				94560B801EE4E0D1005EA16A /* YKOriginalModel.m in Sources */,
 				94F171981EE422CF00C81AFA /* YKCAShapeLayer.m in Sources */,
 				94F171AB1EE422E500C81AFA /* main.m in Sources */,
 				94F171A91EE422E500C81AFA /* AppDelegate.m in Sources */,
+				94560B881EE4E0DB005EA16A /* YYClassInfo.m in Sources */,
+				94560B7F1EE4E0D1005EA16A /* YKKLineModel.m in Sources */,
+				94560B911EE4F592005EA16A /* CATextLayer+YKTextLayer.m in Sources */,
+				94560B8B1EE4ED4F005EA16A /* CAShapeLayer+YKOHLCLayer.m in Sources */,
 				94F171B71EE4236500C81AFA /* YKKlineViewConfig.m in Sources */,
 				94F171B61EE4236500C81AFA /* UIColor+YKKlineThemeColor.m in Sources */,
+				94560B8E1EE4ED96005EA16A /* CAShapeLayer+YKCandleLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

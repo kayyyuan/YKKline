@@ -8,6 +8,8 @@
 
 #import "YKKlineViewConfig.h"
 
+static int candleCount = 60;
+
 @implementation YKKlineViewConfig
 
 + (float)kLineMainViewHeightScale
@@ -23,6 +25,16 @@
 + (float)kLineDateHeightScale
 {
     return 0.05;
+}
+
++ (int)kLineCandleCount
+{
+    return candleCount;
+}
+
++ (void)setKlineCandleCount:(int)count
+{
+    candleCount = count;
 }
 
 @end

@@ -9,6 +9,12 @@
 #import "YKKlineView.h"
 #import "YKKlineViewConfig.h"
 #import "UIColor+YKKlineThemeColor.h"
+#import "YKKLineModel.h"
+#import "YKCandlePointModel.h"
+#import "CAShapeLayer+YKOHLCLayer.h"
+#import "CAShapeLayer+YKCandleLayer.h"
+#import "CATextLayer+YKTextLayer.h"
+#import "CAShapeLayer+YKBorderLayer.h"
 
 
 @interface YKKlineView ()
@@ -19,6 +25,26 @@
 @property (nonatomic, assign) CGRect accessoryRect;
 /**日期rect*/
 @property (nonatomic, assign) CGRect dateRect;
+
+/**当前主图类型*/
+@property (nonatomic, assign) KLineMainType currentMainType;
+
+/**主图最大值*/
+@property (nonatomic, assign) float mainMaxValue;
+/**主图最小值*/
+@property (nonatomic, assign) float mainMinValue;
+/**开始索引*/
+@property (nonatomic, assign) int startIndex;
+/**结束索引*/
+@property (nonatomic, assign) int endIndex;
+
+/**当前主图显示的数据的坐标*/
+@property (nonatomic, strong) NSMutableArray *displayPointArr;
+
+/**主图图层*/
+@property (nonatomic, strong) CAShapeLayer *mainLayer;
+/**长按十字叉图层*/
+@property (nonatomic, strong) CAShapeLayer *crossViewLayer;
 
 
 @end
@@ -35,6 +61,223 @@
     }
     
     return self;
+}
+
+- (void)setKLineModelArr:(NSArray *)kLineModelArr
+{
+    _kLineModelArr = kLineModelArr;
+    
+    //设置起始索引
+    _startIndex = (int)kLineModelArr.count - [YKKlineViewConfig kLineCandleCount] - 1;
+    _endIndex = (int)kLineModelArr.count;
+}
+
+- (void)drawWithMainType:(KLineMainType)mainType
+{
+    //保存主图类型
+    _currentMainType = mainType;
+    
+    //求出最大最小值
+    _mainMinValue = (float)INT32_MAX;
+    _mainMaxValue = (float)INT32_MIN;
+    for (int idx=_startIndex; idx<_endIndex; idx++)
+    {
+        YKKLineModel *model = self.kLineModelArr[idx];
+        if (_mainMinValue > model.low)
+        {
+            _mainMinValue = model.low;
+        }
+        if (_mainMaxValue < model.high)
+        {
+            _mainMaxValue = model.high;
+        }
+    }
+    float unitValue = (_mainMaxValue - _mainMinValue) / CGRectGetHeight(_mainRect);
+    
+    //转换主图开高收低的坐标点
+    [self coverCandlePointWithUnitValue:unitValue];
+    
+    switch (mainType)
+    {
+        case KLineMainCandle:
+        {
+            //绘制蜡烛
+            [self drawCandleWithPointModelArr:self.displayPointArr];
+        }
+            break;
+        case KLineMainOHLC:
+        {
+            //绘制OHLC
+            [self drawOHLCWithPointModelArr:self.displayPointArr];
+        }
+            break;
+        default:
+            break;
+    }
+    
+    //绘制左侧价格
+    [self drawLeftValue];
+    //绘制底部日期
+    [self drawBottomDateValue];
+    
+    [self.layer addSublayer:self.mainLayer];
+}
+
+/**
+ 绘制左侧价格
+ */
+- (void)drawLeftValue
+{
+    float unitPrice = (_mainMaxValue - _mainMinValue) / 4.f;
+    float unitH = CGRectGetHeight(_mainRect) / 4.f;
+    
+    //求得价格rect
+    NSDictionary *attribute = @{NSFontAttributeName:[UIFont systemFontOfSize:9.f]};
+    CGRect priceRect = [self rectOfNSString:[NSString stringWithFormat:@"%.2f", _mainMaxValue] attribute:attribute];
+    
+    for (int idx = 0; idx < 5; idx++)
+    {
+        float height = 0.f;
+        if (idx == 4)
+        {
+            height = idx * unitH - CGRectGetHeight(priceRect);
+        } else
+        {
+            height = idx * unitH;
+        }
+        CGRect rect = CGRectMake(CGRectGetMinX(_mainRect),
+                                 CGRectGetMinY(_mainRect) + height,
+                                 CGRectGetWidth(priceRect),
+                                 CGRectGetHeight(priceRect));
+        //计算价格
+        NSString *str = [NSString stringWithFormat:@"%.2f", _mainMaxValue - idx * unitPrice];
+        CATextLayer *layer = [CATextLayer getTextLayerWithString:str
+                                                       textColor:[UIColor blackColor]
+                                                        fontSize:9.f
+                                                 backgroundColor:[UIColor clearColor]
+                                                           frame:rect];
+        
+        [self.mainLayer addSublayer:layer];
+    }
+}
+
+/**
+ 绘制日期
+ */
+- (void)drawBottomDateValue
+{
+    NSMutableArray *kLineDateArr = [NSMutableArray array];
+    
+    int unitCount = [YKKlineViewConfig kLineCandleCount] / 4;
+    for (int idx=0; idx<5; idx++)
+    {
+        YKKLineModel *model = self.kLineModelArr[_startIndex + idx * unitCount];
+        
+        NSDate *detaildate = [NSDate dateWithTimeIntervalSince1970:model.timeStamp];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"YYYY-MM-dd"];
+        NSString *dateStr = [dateFormatter stringFromDate:detaildate];
+        
+        [kLineDateArr addObject:dateStr];
+    }
+    
+    NSDictionary *attribute = @{NSFontAttributeName:[UIFont systemFontOfSize:9.f]};
+    CGRect strRect = [self rectOfNSString:@"0000-00-00" attribute:attribute];
+    float strW = CGRectGetWidth(strRect);
+    float strH = CGRectGetHeight(strRect);
+    
+    float unitW = CGRectGetWidth(_mainRect) / 4;
+    
+    //循环绘制坐标点
+    for (int idx = 0; idx < kLineDateArr.count; idx++)
+    {
+        CATextLayer *textLayer = nil;
+        
+        if (idx == kLineDateArr.count-1)
+        {//最后一个
+            CGRect rect = CGRectMake(idx * unitW - strW, CGRectGetMaxY(_mainRect), strW, strH);
+            textLayer = [CATextLayer getTextLayerWithString:kLineDateArr[idx] textColor:[UIColor blackColor] fontSize:9.f backgroundColor:[UIColor clearColor] frame:rect];
+        }else if(idx == 0)
+        {//第一个
+            CGRect rect = CGRectMake(idx * unitW, CGRectGetMaxY(_mainRect), strW, strH);
+            textLayer = [CATextLayer getTextLayerWithString:kLineDateArr[idx] textColor:[UIColor blackColor] fontSize:9.f backgroundColor:[UIColor clearColor] frame:rect];
+        }else
+        {//中间
+            CGRect rect = CGRectMake(idx * unitW - strW/2, CGRectGetMaxY(_mainRect), strW, strH);
+            textLayer = [CATextLayer getTextLayerWithString:kLineDateArr[idx] textColor:[UIColor blackColor] fontSize:9.f backgroundColor:[UIColor clearColor] frame:rect];
+        }
+        
+        [self.mainLayer addSublayer:textLayer];
+    }
+}
+
+/**
+ 绘制蜡烛线
+ 
+ @param pointModelArr 坐标点模型数组
+ */
+- (void)drawCandleWithPointModelArr:(NSArray *)pointModelArr
+{
+    //每根蜡烛的宽度
+    float candleW = CGRectGetWidth(_mainRect) / [YKKlineViewConfig kLineCandleCount];
+    
+    for (int idx = 0; idx< [YKKlineViewConfig kLineCandleCount]; idx++)
+    {
+        YKCandlePointModel *model = pointModelArr[idx];
+        CAShapeLayer *layer = [CAShapeLayer getCandleLayerWithPointModel:model candleW:candleW];
+        
+        [self.mainLayer addSublayer:layer];
+    }
+}
+
+/**
+ 绘制OHLC线
+ 
+ @param pointModelArr 坐标点模型数组
+ */
+- (void)drawOHLCWithPointModelArr:(NSArray *)pointModelArr
+{
+    //每根OHLC的宽度
+    float candleW = CGRectGetWidth(_mainRect) / [YKKlineViewConfig kLineCandleCount];
+    
+    for (int idx = 0; idx< [YKKlineViewConfig kLineCandleCount]; idx++)
+    {
+        YKCandlePointModel *model = pointModelArr[idx];
+        CAShapeLayer *layer = [CAShapeLayer getOHLCLayerWithPointModel:model candleW:candleW];
+        
+        [self.mainLayer addSublayer:layer];
+    }
+}
+
+/**
+ 转换蜡烛图坐标点
+ 
+ @param unitValue 单位值
+ */
+- (void)coverCandlePointWithUnitValue:(float)unitValue
+{
+    [self.displayPointArr removeAllObjects];
+    
+    float candleW = CGRectGetWidth(_mainRect) / [YKKlineViewConfig kLineCandleCount];
+    
+    for (int idx = _startIndex; idx<_endIndex; idx++)
+    {
+        YKKLineModel *model = self.kLineModelArr[idx];
+        float x = CGRectGetMinX(_mainRect) + candleW * (idx - (_startIndex - 0));
+        
+        CGPoint hPoint = CGPointMake(x + candleW/2,
+                                     ABS(CGRectGetMaxY(_mainRect) - (model.high  - _mainMinValue)/unitValue));
+        CGPoint lPoint = CGPointMake(x + candleW/2,
+                                     ABS(CGRectGetMaxY(_mainRect) - (model.low   - _mainMinValue)/unitValue));
+        CGPoint oPoint = CGPointMake(x + candleW/2,
+                                     ABS(CGRectGetMaxY(_mainRect) - (model.open  - _mainMinValue)/unitValue));
+        CGPoint cPoint = CGPointMake(x + candleW/2,
+                                     ABS(CGRectGetMaxY(_mainRect) - (model.close - _mainMinValue)/unitValue));
+        [self.displayPointArr addObject:[YKCandlePointModel candlePointModelWithOpoint:oPoint
+                                                                            Hpoint:hPoint
+                                                                            Lpoint:lPoint
+                                                                            Cpoint:cPoint]];
+    }
 }
 
 /**
@@ -89,12 +332,167 @@
     
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+/**
+ 清理图层
+ */
+- (void)clearLayer
+{
+    [self.mainLayer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
+    [self.mainLayer removeFromSuperlayer];
 }
-*/
+
+/**
+ 向右拖拽
+ 
+ @param offsetcount 拖拽的偏移量
+ */
+- (void)dragRightOffsetcount:(int)offsetcount
+{
+    if (_startIndex - offsetcount < 0)
+    {
+        return;
+    }
+    [self clearLayer];
+    _startIndex -= offsetcount;
+    _endIndex -= offsetcount;
+    
+    [self drawWithMainType:self.currentMainType];
+}
+
+/**
+ 向左拖拽
+ 
+ @param offsetcount 拖拽的偏移量
+ */
+- (void)dragLeftOffsetcount:(int)offsetcount
+{
+    if (_endIndex + offsetcount > self.kLineModelArr.count)
+    {
+        return;
+    }
+    [self clearLayer];
+    _startIndex += offsetcount;
+    _endIndex += offsetcount;
+    
+    [self drawWithMainType:self.currentMainType];
+}
+
+/**
+ 清理十字叉图层
+ */
+- (void)clearCrossViewLayer
+{
+    [self.crossViewLayer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
+    [self.crossViewLayer removeFromSuperlayer];
+}
+
+- (void)drawCrossViewWithX:(float)x
+{
+    [self clearCrossViewLayer];
+    
+    //根据坐标计算索引
+    float unitW = CGRectGetWidth(_mainRect) / [YKKlineViewConfig kLineCandleCount];
+    int index = (int)(x / unitW);
+    if (index >= self.kLineModelArr.count)
+    {
+        index = (int)self.kLineModelArr.count - 1;
+    }
+    YKKLineModel *model = self.kLineModelArr[index + _startIndex];
+    YKCandlePointModel *pointModel = self.displayPointArr[index];
+    
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    
+    //竖线
+    [path moveToPoint:CGPointMake(pointModel.cPoint.x, CGRectGetMinY(_mainRect))];
+    [path addLineToPoint:CGPointMake(pointModel.cPoint.x, CGRectGetMaxY(_mainRect))];
+    
+    //横线
+    [path moveToPoint:CGPointMake(CGRectGetMinX(_mainRect), pointModel.cPoint.y)];
+    [path addLineToPoint:CGPointMake(CGRectGetMaxX(_mainRect), pointModel.cPoint.y)];
+    //设置横竖线的属性
+    self.crossViewLayer.path = path.CGPath;
+    self.crossViewLayer.lineWidth = 1.f;
+    self.crossViewLayer.strokeColor = [UIColor blackColor].CGColor;
+    self.crossViewLayer.fillColor = [UIColor clearColor].CGColor;
+    //取出数据模型
+    NSDictionary *attribute = @{NSFontAttributeName:[UIFont systemFontOfSize:9.f]};
+    //计算各种rect
+    NSDate *detaildate = [NSDate dateWithTimeIntervalSince1970:model.timeStamp];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YYYY-MM-dd"];
+    NSString *timeStr = [dateFormatter stringFromDate:detaildate];
+    NSString *priceStr = [NSString stringWithFormat:@"%.2f", model.close];
+    CGRect timeStrRect = [self rectOfNSString:timeStr attribute:attribute];
+    CGRect priceStrRect = [self rectOfNSString:priceStr attribute:attribute];
+    
+    CGRect maskTimeRect = CGRectMake(pointModel.cPoint.x - CGRectGetWidth(timeStrRect)/2-5.f,
+                                     CGRectGetMaxY(_mainRect),
+                                     CGRectGetWidth(timeStrRect)+10.f,
+                                     CGRectGetHeight(timeStrRect) + 5.f);
+    CGRect maskPriceRect = CGRectMake(CGRectGetMinX(_mainRect),
+                                      pointModel.cPoint.y - CGRectGetHeight(priceStrRect)/2-2.5f,
+                                      CGRectGetWidth(priceStrRect)+10.f,
+                                      CGRectGetHeight(priceStrRect)+5.f);
+    
+    CGRect timeRect = CGRectMake(CGRectGetMinX(maskTimeRect)+5.f, CGRectGetMinY(maskTimeRect)+2.5f, CGRectGetWidth(timeStrRect), CGRectGetHeight(timeStrRect));
+    CGRect priceRect = CGRectMake(CGRectGetMinX(maskPriceRect)+5.f, CGRectGetMinY(maskPriceRect)+2.5f, CGRectGetWidth(priceStrRect), CGRectGetHeight(priceStrRect));
+    //生成时间方块图层
+    CAShapeLayer *timeLayer = [CAShapeLayer getRectLayerWithRect:maskTimeRect dataRect:timeRect dataStr:timeStr fontSize:9.f textColor:[UIColor whiteColor] backColor:[UIColor blackColor]];
+    //生成价格方块图层
+    CAShapeLayer *priceLayer = [CAShapeLayer getRectLayerWithRect:maskPriceRect dataRect:priceRect dataStr:priceStr fontSize:9.f textColor:[UIColor whiteColor] backColor:[UIColor blackColor]];
+    
+    //把3个图层全部添加到十字叉图层中
+    [self.crossViewLayer addSublayer:timeLayer];
+    [self.crossViewLayer addSublayer:priceLayer];
+    
+    //再添加到分时图view的图层中
+    [self.layer addSublayer:self.crossViewLayer];
+}
+
+/**
+ 工具类:根据字符串和富文本属性来生成rect
+ 
+ @param string 字符串
+ @param attribute 富文本属性
+ @return 返回生成的rect
+ */
+- (CGRect)rectOfNSString:(NSString *)string attribute:(NSDictionary *)attribute
+{
+    CGRect rect = [string boundingRectWithSize:CGSizeMake(MAXFLOAT, 0)
+                                       options:NSStringDrawingTruncatesLastVisibleLine |NSStringDrawingUsesLineFragmentOrigin |
+                   NSStringDrawingUsesFontLeading
+                                    attributes:attribute
+                                       context:nil];
+    return rect;
+}
+
+- (CAShapeLayer *)crossViewLayer
+{
+    if (!_crossViewLayer)
+    {
+        _crossViewLayer = [CAShapeLayer layer];
+    }
+    
+    return _crossViewLayer;
+}
+
+- (CAShapeLayer *)mainLayer
+{
+    if (!_mainLayer) {
+        _mainLayer = [CAShapeLayer layer];
+    }
+    
+    return _mainLayer;
+}
+
+- (NSMutableArray *)displayPointArr
+{
+    if (!_displayPointArr)
+    {
+        _displayPointArr = [NSMutableArray array];
+    }
+    
+    return _displayPointArr;
+}
 
 @end

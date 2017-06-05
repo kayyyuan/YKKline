@@ -23,4 +23,8 @@
 
 + (float)kLineDateHeightScale;
 
++ (int)kLineCandleCount;
+
++ (void)setKlineCandleCount:(int)count;
+
 @end
