@@ -19,12 +19,12 @@ static int candleCount = 60;
 
 + (float)kLineAccessoryViewHeightScale
 {
-    return 0.35;
+    return 0.37;
 }
 
 + (float)kLineDateHeightScale
 {
-    return 0.05;
+    return 0.03;
 }
 
 + (int)kLineCandleCount

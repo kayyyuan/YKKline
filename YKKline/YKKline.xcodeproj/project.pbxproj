@@ -17,6 +17,8 @@
 		94560B8E1EE4ED96005EA16A /* CAShapeLayer+YKCandleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 94560B8D1EE4ED96005EA16A /* CAShapeLayer+YKCandleLayer.m */; };
 		94560B911EE4F592005EA16A /* CATextLayer+YKTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 94560B901EE4F592005EA16A /* CATextLayer+YKTextLayer.m */; };
 		94560B941EE4F9DF005EA16A /* CAShapeLayer+YKBorderLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 94560B931EE4F9DF005EA16A /* CAShapeLayer+YKBorderLayer.m */; };
+		94560B9D1EE507BE005EA16A /* YKIndicatorBaseLib.c in Sources */ = {isa = PBXBuildFile; fileRef = 94560B9B1EE507BE005EA16A /* YKIndicatorBaseLib.c */; };
+		94560BA01EE507D3005EA16A /* YKIndicatorLib.c in Sources */ = {isa = PBXBuildFile; fileRef = 94560B9E1EE507D3005EA16A /* YKIndicatorLib.c */; };
 		947035871EE40725003617BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 947035851EE40725003617BB /* Main.storyboard */; };
 		947035891EE40725003617BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 947035881EE40725003617BB /* Assets.xcassets */; };
 		9470358C1EE40725003617BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9470358A1EE40725003617BB /* LaunchScreen.storyboard */; };
@@ -52,6 +54,10 @@
 		94560B901EE4F592005EA16A /* CATextLayer+YKTextLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CATextLayer+YKTextLayer.m"; sourceTree = "<group>"; };
 		94560B921EE4F9DF005EA16A /* CAShapeLayer+YKBorderLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAShapeLayer+YKBorderLayer.h"; sourceTree = "<group>"; };
 		94560B931EE4F9DF005EA16A /* CAShapeLayer+YKBorderLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAShapeLayer+YKBorderLayer.m"; sourceTree = "<group>"; };
+		94560B9B1EE507BE005EA16A /* YKIndicatorBaseLib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = YKIndicatorBaseLib.c; sourceTree = "<group>"; };
+		94560B9C1EE507BE005EA16A /* YKIndicatorBaseLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKIndicatorBaseLib.h; sourceTree = "<group>"; };
+		94560B9E1EE507D3005EA16A /* YKIndicatorLib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = YKIndicatorLib.c; sourceTree = "<group>"; };
+		94560B9F1EE507D3005EA16A /* YKIndicatorLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKIndicatorLib.h; sourceTree = "<group>"; };
 		947035791EE40725003617BB /* YKKline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YKKline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		947035861EE40725003617BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		947035881EE40725003617BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -173,6 +179,10 @@
 				94560B7C1EE4E0D1005EA16A /* YKOriginalModel.h */,
 				94560B7D1EE4E0D1005EA16A /* YKOriginalModel.m */,
 				94560B761EE4E0B6005EA16A /* kLine.json */,
+				94560B9B1EE507BE005EA16A /* YKIndicatorBaseLib.c */,
+				94560B9C1EE507BE005EA16A /* YKIndicatorBaseLib.h */,
+				94560B9E1EE507D3005EA16A /* YKIndicatorLib.c */,
+				94560B9F1EE507D3005EA16A /* YKIndicatorLib.h */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -293,6 +303,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94560B9D1EE507BE005EA16A /* YKIndicatorBaseLib.c in Sources */,
+				94560BA01EE507D3005EA16A /* YKIndicatorLib.c in Sources */,
 				94560B7E1EE4E0D1005EA16A /* YKCandlePointModel.m in Sources */,
 				94560B941EE4F9DF005EA16A /* CAShapeLayer+YKBorderLayer.m in Sources */,
 				94F171B01EE422EB00C81AFA /* YKKlineViewController.m in Sources */,
