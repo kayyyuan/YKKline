@@ -12,12 +12,15 @@
 #import "YKKlineOriginalModel.h"
 #import "YKTimeChartView.h"
 #import "YKTimelineOriginalModel.h"
+#import "YKSegmentView.h"
 
 @interface YKKlineViewController ()
 
 @property (nonatomic, strong) YKKlineView *kLineView;
 
 @property (nonatomic, strong) YKTimeChartView *timeChartView;
+
+@property (nonatomic, strong) YKSegmentView *segmentView;
 
 @end
 
@@ -29,8 +32,16 @@ static float kLineGlobalOffset = 0.f;
 {
     [super viewDidLoad];
     
-    
     [self initTimeLineView];
+    
+    [self initSegmentView];
+}
+
+- (void)initSegmentView
+{
+    _segmentView = [[YKSegmentView alloc] initWithFrame:CGRectMake(14, 22, CGRectGetWidth(self.view.frame)-28, 50)];
+    
+    [self.view addSubview:_segmentView];
 }
 
 - (void)initTimeLineView
@@ -38,7 +49,7 @@ static float kLineGlobalOffset = 0.f;
     double yc = 0.f;
     NSArray *arr = [YKTimelineOriginalModel getTimeChartModelArrAtYc:&yc];
     
-    CGRect rect = CGRectMake(14, 22, CGRectGetWidth(self.view.frame)-28, CGRectGetHeight(self.view.frame) - 22 - 14);
+    CGRect rect = CGRectMake(14, 22+50, CGRectGetWidth(self.view.frame)-28, CGRectGetHeight(self.view.frame) - 22 - 14-50);
     _timeChartView = [[YKTimeChartView alloc] initWithFrame:rect];
     _timeChartView.yc = yc;
     _timeChartView.timeCharModelArr = arr;
@@ -56,7 +67,7 @@ static float kLineGlobalOffset = 0.f;
 {
     //添加长按手势
     UILongPressGestureRecognizer *longGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(timeChartLongGestureAction:)];
-    longGesture.minimumPressDuration = 0.f;
+    longGesture.minimumPressDuration = 0.5f;
     longGesture.numberOfTouchesRequired = 1;
     [_timeChartView addGestureRecognizer:longGesture];
 }
