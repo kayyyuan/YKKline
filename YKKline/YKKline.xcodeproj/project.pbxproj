@@ -7,10 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9422E3AF1EF2276E004F9D75 /* timeLineData.json in Resources */ = {isa = PBXBuildFile; fileRef = 944919241EF22660008D6E4D /* timeLineData.json */; };
+		944919171EF221AD008D6E4D /* YKKlineOriginalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 944919161EF221AD008D6E4D /* YKKlineOriginalModel.m */; };
+		9449191A1EF22242008D6E4D /* YKTimelineOriginalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 944919191EF22242008D6E4D /* YKTimelineOriginalModel.m */; };
+		9449191D1EF224C4008D6E4D /* YKTimeChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 944919131EF21FA1008D6E4D /* YKTimeChartView.m */; };
+		944919221EF225E9008D6E4D /* YKTimeChartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9449191B1EF22353008D6E4D /* YKTimeChartModel.m */; };
+		944919231EF225F8008D6E4D /* YKTimeLinePointModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9449191F1EF22588008D6E4D /* YKTimeLinePointModel.m */; };
 		94560B771EE4E0B6005EA16A /* kLine.json in Resources */ = {isa = PBXBuildFile; fileRef = 94560B761EE4E0B6005EA16A /* kLine.json */; };
 		94560B7E1EE4E0D1005EA16A /* YKCandlePointModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94560B791EE4E0D1005EA16A /* YKCandlePointModel.m */; };
 		94560B7F1EE4E0D1005EA16A /* YKKLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94560B7B1EE4E0D1005EA16A /* YKKLineModel.m */; };
-		94560B801EE4E0D1005EA16A /* YKOriginalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94560B7D1EE4E0D1005EA16A /* YKOriginalModel.m */; };
 		94560B871EE4E0DB005EA16A /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94560B831EE4E0DB005EA16A /* NSObject+YYModel.m */; };
 		94560B881EE4E0DB005EA16A /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 94560B851EE4E0DB005EA16A /* YYClassInfo.m */; };
 		94560B8B1EE4ED4F005EA16A /* CAShapeLayer+YKOHLCLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 94560B8A1EE4ED4F005EA16A /* CAShapeLayer+YKOHLCLayer.m */; };
@@ -34,13 +39,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		944919131EF21FA1008D6E4D /* YKTimeChartView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YKTimeChartView.m; sourceTree = "<group>"; };
+		944919141EF21FA1008D6E4D /* YKTimeChartView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YKTimeChartView.h; sourceTree = "<group>"; };
+		944919151EF221AD008D6E4D /* YKKlineOriginalModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YKKlineOriginalModel.h; sourceTree = "<group>"; };
+		944919161EF221AD008D6E4D /* YKKlineOriginalModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YKKlineOriginalModel.m; sourceTree = "<group>"; };
+		944919181EF22242008D6E4D /* YKTimelineOriginalModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YKTimelineOriginalModel.h; sourceTree = "<group>"; };
+		944919191EF22242008D6E4D /* YKTimelineOriginalModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YKTimelineOriginalModel.m; sourceTree = "<group>"; };
+		9449191B1EF22353008D6E4D /* YKTimeChartModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YKTimeChartModel.m; sourceTree = "<group>"; };
+		9449191C1EF22353008D6E4D /* YKTimeChartModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YKTimeChartModel.h; sourceTree = "<group>"; };
+		9449191E1EF22588008D6E4D /* YKTimeLinePointModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YKTimeLinePointModel.h; sourceTree = "<group>"; };
+		9449191F1EF22588008D6E4D /* YKTimeLinePointModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YKTimeLinePointModel.m; sourceTree = "<group>"; };
+		944919241EF22660008D6E4D /* timeLineData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = timeLineData.json; sourceTree = "<group>"; };
 		94560B761EE4E0B6005EA16A /* kLine.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = kLine.json; sourceTree = "<group>"; };
 		94560B781EE4E0D1005EA16A /* YKCandlePointModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKCandlePointModel.h; sourceTree = "<group>"; };
 		94560B791EE4E0D1005EA16A /* YKCandlePointModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKCandlePointModel.m; sourceTree = "<group>"; };
 		94560B7A1EE4E0D1005EA16A /* YKKLineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKKLineModel.h; sourceTree = "<group>"; };
 		94560B7B1EE4E0D1005EA16A /* YKKLineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKKLineModel.m; sourceTree = "<group>"; };
-		94560B7C1EE4E0D1005EA16A /* YKOriginalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKOriginalModel.h; sourceTree = "<group>"; };
-		94560B7D1EE4E0D1005EA16A /* YKOriginalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKOriginalModel.m; sourceTree = "<group>"; };
 		94560B821EE4E0DB005EA16A /* NSObject+YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYModel.h"; sourceTree = "<group>"; };
 		94560B831EE4E0DB005EA16A /* NSObject+YYModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YYModel.m"; sourceTree = "<group>"; };
 		94560B841EE4E0DB005EA16A /* YYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYClassInfo.h; sourceTree = "<group>"; };
@@ -124,7 +138,7 @@
 			children = (
 				94F171901EE422CF00C81AFA /* View */,
 				94F171A11EE422DE00C81AFA /* Model */,
-				94F171B11EE4236500C81AFA /* Other */,
+				94F171B11EE4236500C81AFA /* Config */,
 				94F171A21EE422E500C81AFA /* Demo */,
 				94F171AD1EE422EB00C81AFA /* Controller */,
 				947035851EE40725003617BB /* Main.storyboard */,
@@ -164,6 +178,8 @@
 		94F171971EE422CF00C81AFA /* YKTimeline */ = {
 			isa = PBXGroup;
 			children = (
+				944919141EF21FA1008D6E4D /* YKTimeChartView.h */,
+				944919131EF21FA1008D6E4D /* YKTimeChartView.m */,
 			);
 			path = YKTimeline;
 			sourceTree = "<group>";
@@ -176,13 +192,20 @@
 				94560B791EE4E0D1005EA16A /* YKCandlePointModel.m */,
 				94560B7A1EE4E0D1005EA16A /* YKKLineModel.h */,
 				94560B7B1EE4E0D1005EA16A /* YKKLineModel.m */,
-				94560B7C1EE4E0D1005EA16A /* YKOriginalModel.h */,
-				94560B7D1EE4E0D1005EA16A /* YKOriginalModel.m */,
 				94560B761EE4E0B6005EA16A /* kLine.json */,
+				944919241EF22660008D6E4D /* timeLineData.json */,
 				94560B9B1EE507BE005EA16A /* YKIndicatorBaseLib.c */,
 				94560B9C1EE507BE005EA16A /* YKIndicatorBaseLib.h */,
 				94560B9E1EE507D3005EA16A /* YKIndicatorLib.c */,
 				94560B9F1EE507D3005EA16A /* YKIndicatorLib.h */,
+				944919151EF221AD008D6E4D /* YKKlineOriginalModel.h */,
+				944919161EF221AD008D6E4D /* YKKlineOriginalModel.m */,
+				944919181EF22242008D6E4D /* YKTimelineOriginalModel.h */,
+				944919191EF22242008D6E4D /* YKTimelineOriginalModel.m */,
+				9449191C1EF22353008D6E4D /* YKTimeChartModel.h */,
+				9449191B1EF22353008D6E4D /* YKTimeChartModel.m */,
+				9449191E1EF22588008D6E4D /* YKTimeLinePointModel.h */,
+				9449191F1EF22588008D6E4D /* YKTimeLinePointModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -209,7 +232,7 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		94F171B11EE4236500C81AFA /* Other */ = {
+		94F171B11EE4236500C81AFA /* Config */ = {
 			isa = PBXGroup;
 			children = (
 				94F171B21EE4236500C81AFA /* UIColor+YKKlineThemeColor.h */,
@@ -217,7 +240,7 @@
 				94F171B41EE4236500C81AFA /* YKKlineViewConfig.h */,
 				94F171B51EE4236500C81AFA /* YKKlineViewConfig.m */,
 			);
-			path = Other;
+			path = Config;
 			sourceTree = "<group>";
 		};
 		94F171B81EE4249200C81AFA /* YKKline */ = {
@@ -288,6 +311,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9422E3AF1EF2276E004F9D75 /* timeLineData.json in Resources */,
 				94560B771EE4E0B6005EA16A /* kLine.json in Resources */,
 				94F171AA1EE422E500C81AFA /* Info.plist in Resources */,
 				9470358C1EE40725003617BB /* LaunchScreen.storyboard in Resources */,
@@ -303,19 +327,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				944919231EF225F8008D6E4D /* YKTimeLinePointModel.m in Sources */,
+				944919221EF225E9008D6E4D /* YKTimeChartModel.m in Sources */,
+				9449191D1EF224C4008D6E4D /* YKTimeChartView.m in Sources */,
 				94560B9D1EE507BE005EA16A /* YKIndicatorBaseLib.c in Sources */,
 				94560BA01EE507D3005EA16A /* YKIndicatorLib.c in Sources */,
 				94560B7E1EE4E0D1005EA16A /* YKCandlePointModel.m in Sources */,
 				94560B941EE4F9DF005EA16A /* CAShapeLayer+YKBorderLayer.m in Sources */,
 				94F171B01EE422EB00C81AFA /* YKKlineViewController.m in Sources */,
 				94F171AC1EE422E500C81AFA /* ViewController.m in Sources */,
+				944919171EF221AD008D6E4D /* YKKlineOriginalModel.m in Sources */,
 				94560B871EE4E0DB005EA16A /* NSObject+YYModel.m in Sources */,
 				94F171BB1EE4249200C81AFA /* YKKlineView.m in Sources */,
-				94560B801EE4E0D1005EA16A /* YKOriginalModel.m in Sources */,
 				94F171981EE422CF00C81AFA /* YKCAShapeLayer.m in Sources */,
 				94F171AB1EE422E500C81AFA /* main.m in Sources */,
 				94F171A91EE422E500C81AFA /* AppDelegate.m in Sources */,
 				94560B881EE4E0DB005EA16A /* YYClassInfo.m in Sources */,
+				9449191A1EF22242008D6E4D /* YKTimelineOriginalModel.m in Sources */,
 				94560B7F1EE4E0D1005EA16A /* YKKLineModel.m in Sources */,
 				94560B911EE4F592005EA16A /* CATextLayer+YKTextLayer.m in Sources */,
 				94560B8B1EE4ED4F005EA16A /* CAShapeLayer+YKOHLCLayer.m in Sources */,
@@ -441,11 +469,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/YKKline/Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.-.YKKline";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "arm64 armv7 armv7s x86_64";
 			};
 			name = Debug;
 		};
@@ -453,11 +483,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/YKKline/Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.-.YKKline";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "arm64 armv7 armv7s x86_64";
 			};
 			name = Release;
 		};

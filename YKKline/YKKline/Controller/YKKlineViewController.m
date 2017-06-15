@@ -9,11 +9,15 @@
 #import "YKKlineViewController.h"
 #import "YKKlineView.h"
 #import "UIColor+YKKlineThemeColor.h"
-#import "YKOriginalModel.h"
+#import "YKKlineOriginalModel.h"
+#import "YKTimeChartView.h"
+#import "YKTimelineOriginalModel.h"
 
 @interface YKKlineViewController ()
 
 @property (nonatomic, strong) YKKlineView *kLineView;
+
+@property (nonatomic, strong) YKTimeChartView *timeChartView;
 
 @end
 
@@ -21,21 +25,102 @@
 
 static float kLineGlobalOffset = 0.f;
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
+    
+    [self initTimeLineView];
+}
+
+- (void)initTimeLineView
+{
+    double yc = 0.f;
+    NSArray *arr = [YKTimelineOriginalModel getTimeChartModelArrAtYc:&yc];
+    
+    CGRect rect = CGRectMake(14, 22, CGRectGetWidth(self.view.frame)-28, CGRectGetHeight(self.view.frame) - 22 - 14);
+    _timeChartView = [[YKTimeChartView alloc] initWithFrame:rect];
+    _timeChartView.yc = yc;
+    _timeChartView.timeCharModelArr = arr;
+    
+    [self.view addSubview:_timeChartView];
+    
+    [_timeChartView draw];
+    
+    [self TimeLineViewAddGesture];
+}
+
+#pragma mark - 分时线手势响应
+
+- (void)TimeLineViewAddGesture
+{
+    //添加长按手势
+    UILongPressGestureRecognizer *longGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(timeChartLongGestureAction:)];
+    longGesture.minimumPressDuration = 0.f;
+    longGesture.numberOfTouchesRequired = 1;
+    [_timeChartView addGestureRecognizer:longGesture];
+}
+
+- (void)timeChartLongGestureAction:(UILongPressGestureRecognizer *)longGesture
+{
+    if (longGesture.state == UIGestureRecognizerStateBegan || longGesture.state == UIGestureRecognizerStateChanged)
+    {//第一次长按获取 或者 长按然后变化坐标点
+        
+        //获取坐标
+        CGPoint point = [longGesture locationInView:_timeChartView];
+        
+        float x = 0.f;
+        float y = 0.f;
+        //判断临界情况
+        if (point.x < 0)
+        {
+            x = 0.f;
+        }else if (point.x > CGRectGetWidth(_timeChartView.frame))
+        {
+            x = CGRectGetWidth(_timeChartView.frame);
+        }else
+        {
+            x = point.x;
+        }
+        if (point.y < 0)
+        {
+            y = 0.f;
+        }else if (point.y > (CGRectGetHeight(_timeChartView.frame) - 20.f))
+        {
+            y = CGRectGetHeight(_timeChartView.frame) - 20.f;
+        }else
+        {
+            y = point.y;
+        }
+        
+        //开始绘制十字叉
+        [_timeChartView drawTicksWithPoint:CGPointMake(x, y)];
+        
+    } else
+    {//事件取消
+        
+        //当抬起头后，清理十字叉
+        [_timeChartView clearTicks];
+    }
+}
+
+#pragma mark - 初始化k线
+
+- (void)initKLineView
+{
     YKKlineView *kLineView = [[YKKlineView alloc] initWithFrame:CGRectMake(14,22,CGRectGetWidth(self.view.frame)-28,CGRectGetHeight(self.view.frame) - 22 - 14)];
     kLineView.backgroundColor = [UIColor kLineBackGroundColor];
     _kLineView = kLineView;
     
     [self.view addSubview:_kLineView];
     
-    _kLineView.kLineModelArr = [YKOriginalModel getKLineModelArr];
+    _kLineView.kLineModelArr = [YKKlineOriginalModel getKLineModelArr];
     [self kLineViewAddGesture];
     
     [_kLineView drawWithMainType:KLineMainOHLC];
-    
 }
+
+#pragma mark - k线手势响应
 
 - (void)kLineViewAddGesture
 {
