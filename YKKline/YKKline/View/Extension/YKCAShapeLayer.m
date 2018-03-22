@@ -10,4 +10,9 @@
 
 @implementation YKCAShapeLayer
 
+- (id<CAAction>)actionForKey:(NSString *)event
+{
+    return nil;
+}
+
 @end

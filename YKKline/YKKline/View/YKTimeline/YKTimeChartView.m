@@ -7,10 +7,11 @@
 //
 
 #import "YKTimeChartView.h"
-#import "CATextLayer+YKTextLayer.h"
-#import "CAShapeLayer+YKBorderLayer.h"
+#import "YKCATextLayer+YKTextLayer.h"
+#import "YKCAShapeLayer+YKBorderLayer.h"
 #import "YKTimeLinePointModel.h"
 #import "YKCAShapeLayer.h"
+#import "YKCATextLayer.h"
 
 @interface YKTimeChartView ()
 
@@ -93,11 +94,11 @@ static float timePointH = 20.f;
     CGRect priceRect = CGRectMake(CGRectGetMinX(maskPriceRect)+5.f, CGRectGetMinY(maskPriceRect)+2.5f, CGRectGetWidth(priceStrRect), CGRectGetHeight(priceStrRect));
     CGRect perRect = CGRectMake(CGRectGetMinX(maskPerRect)+5.f, CGRectGetMinY(maskPerRect)+2.5f, CGRectGetWidth(perStrRect), CGRectGetHeight(perStrRect));
     //生成时间方块图层
-    CAShapeLayer *timeLayer = [CAShapeLayer getRectLayerWithRect:maskTimeRect dataRect:timeRect dataStr:timeStr fontSize:9.f textColor:[UIColor whiteColor] backColor:[UIColor blackColor]];
+    YKCAShapeLayer *timeLayer = [YKCAShapeLayer getRectLayerWithRect:maskTimeRect dataRect:timeRect dataStr:timeStr fontSize:9.f textColor:[UIColor whiteColor] backColor:[UIColor blackColor]];
     //生成价格方块图层
-    CAShapeLayer *priceLayer = [CAShapeLayer getRectLayerWithRect:maskPriceRect dataRect:priceRect dataStr:priceStr fontSize:9.f textColor:[UIColor whiteColor] backColor:[UIColor blackColor]];
+    YKCAShapeLayer *priceLayer = [YKCAShapeLayer getRectLayerWithRect:maskPriceRect dataRect:priceRect dataStr:priceStr fontSize:9.f textColor:[UIColor whiteColor] backColor:[UIColor blackColor]];
     //生成百分比方块图层
-    CAShapeLayer *perLayer = [CAShapeLayer getRectLayerWithRect:maskPerRect dataRect:perRect dataStr:perStr fontSize:9.f textColor:[UIColor whiteColor] backColor:[UIColor blackColor]];
+    YKCAShapeLayer *perLayer = [YKCAShapeLayer getRectLayerWithRect:maskPerRect dataRect:perRect dataStr:perStr fontSize:9.f textColor:[UIColor whiteColor] backColor:[UIColor blackColor]];
     //把3个图层全部添加到十字叉图层中
     [self.ticksLayer addSublayer:timeLayer];
     [self.ticksLayer addSublayer:priceLayer];
@@ -194,20 +195,20 @@ static float timePointH = 20.f;
     //循环绘制坐标点
     for (int idx = 0; idx < timePointArr.count; idx++)
     {
-        CATextLayer *textLayer = nil;
+        YKCATextLayer *textLayer = nil;
         
         if (idx == timePointArr.count-1)
         {//最后一个
             CGRect rect = CGRectMake(idx * unitW - strW, CGRectGetHeight(self.frame)-timePointH, strW, strH);
-            textLayer = [CATextLayer getTextLayerWithString:timePointArr[idx] textColor:[UIColor blackColor] fontSize:9.f backgroundColor:[UIColor clearColor] frame:rect];
+            textLayer = [YKCATextLayer getTextLayerWithString:timePointArr[idx] textColor:[UIColor blackColor] fontSize:9.f backgroundColor:[UIColor clearColor] frame:rect];
         }else if(idx == 0)
         {//第一个
             CGRect rect = CGRectMake(idx * unitW, CGRectGetHeight(self.frame)-timePointH, strW, strH);
-            textLayer = [CATextLayer getTextLayerWithString:timePointArr[idx] textColor:[UIColor blackColor] fontSize:9.f backgroundColor:[UIColor clearColor] frame:rect];
+            textLayer = [YKCATextLayer getTextLayerWithString:timePointArr[idx] textColor:[UIColor blackColor] fontSize:9.f backgroundColor:[UIColor clearColor] frame:rect];
         }else
         {//中间
             CGRect rect = CGRectMake(idx * unitW - strW/2, CGRectGetHeight(self.frame)-timePointH, strW, strH);
-            textLayer = [CATextLayer getTextLayerWithString:timePointArr[idx] textColor:[UIColor blackColor] fontSize:9.f backgroundColor:[UIColor clearColor] frame:rect];
+            textLayer = [YKCATextLayer getTextLayerWithString:timePointArr[idx] textColor:[UIColor blackColor] fontSize:9.f backgroundColor:[UIColor clearColor] frame:rect];
         }
         
         [self.layer addSublayer:textLayer];
@@ -392,12 +393,12 @@ static float timePointH = 20.f;
         NSString *leftStr = [NSString stringWithFormat:@"%.2f", self.maxValue - idx * unitPrice];
         NSString *rightStr = [NSString stringWithFormat:@"%.2f%%", (self.maxValue - idx * unitPrice - self.yc)/self.yc];
         
-        CATextLayer *leftLayer = [CATextLayer getTextLayerWithString:leftStr
+        YKCATextLayer *leftLayer = [YKCATextLayer getTextLayerWithString:leftStr
                                                            textColor:[UIColor blackColor]
                                                             fontSize:9.f
                                                      backgroundColor:[UIColor clearColor]
                                                                frame:leftRect];
-        CATextLayer *rightLayer = [CATextLayer getTextLayerWithString:rightStr
+        YKCATextLayer *rightLayer = [YKCATextLayer getTextLayerWithString:rightStr
                                                             textColor:[UIColor blackColor]
                                                              fontSize:9.f
                                                       backgroundColor:[UIColor clearColor]

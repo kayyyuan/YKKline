@@ -32,9 +32,11 @@ static float kLineGlobalOffset = 0.f;
 {
     [super viewDidLoad];
     
-    [self initTimeLineView];
+//    [self initTimeLineView];
     
-    [self initSegmentView];
+    [self initKLineView];
+    
+//    [self initSegmentView];
 }
 
 - (void)initSegmentView
@@ -119,7 +121,7 @@ static float kLineGlobalOffset = 0.f;
 
 - (void)initKLineView
 {
-    YKKlineView *kLineView = [[YKKlineView alloc] initWithFrame:CGRectMake(14,22,CGRectGetWidth(self.view.frame)-28,CGRectGetHeight(self.view.frame) - 22 - 14)];
+    YKKlineView *kLineView = [[YKKlineView alloc] initWithFrame:CGRectMake(14,22+50,CGRectGetWidth(self.view.frame)-28,CGRectGetHeight(self.view.frame) - 22 - 14-50)];
     kLineView.backgroundColor = [UIColor kLineBackGroundColor];
     _kLineView = kLineView;
     
@@ -128,7 +130,7 @@ static float kLineGlobalOffset = 0.f;
     _kLineView.kLineModelArr = [YKKlineOriginalModel getKLineModelArr];
     [self kLineViewAddGesture];
     
-    [_kLineView drawWithMainType:KLineMainOHLC];
+    [_kLineView drawWithMainType:KLineMainCandle];
 }
 
 #pragma mark - k线手势响应

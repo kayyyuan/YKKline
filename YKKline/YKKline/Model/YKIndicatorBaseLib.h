@@ -19,7 +19,7 @@
  @param m 参数m值
  @param ma 存储ma值的数组
  */
-void calMa(double value[], int length, int m, double ma[]);
+void calMa(const double value[], int length, int m, double ma[]);
 
 /**
  计算ema值
@@ -29,7 +29,7 @@ void calMa(double value[], int length, int m, double ma[]);
  @param n 参数n值
  @param ema 存储ema值的数组
  */
-void calEma(double value[], int length, int n, double ema[]);
+void calEma(const double value[], int length, int n, double ema[]);
 
 /**
  计算sma值
@@ -40,7 +40,7 @@ void calEma(double value[], int length, int n, double ema[]);
  @param m 参数m值
  @param sma 存储sma值的数组
  */
-void calSma(double value[], int length, int n, int m, double sma[]);
+void calSma(const double value[], int length, int n, int m, double sma[]);
 
 /**
  计算hhv值
@@ -52,7 +52,7 @@ void calSma(double value[], int length, int n, int m, double sma[]);
  @param x 0最高价-1最低价-2开盘价-3收盘价
  @return 返回hhv值
  */
-double calHhv(double value[][4], int length, int n, int index, int x);
+double calHhv(const double value[][4], int length, int n, int index, int x);
 
 /**
  计算llv值
@@ -64,7 +64,7 @@ double calHhv(double value[][4], int length, int n, int index, int x);
  @param x 0最高价-1最低价-2开盘价-3收盘价
  @return 返回llv值
  */
-double calLlv(double value[][4], int length, int n, int index, int x);
+double calLlv(const double value[][4], int length, int n, int index, int x);
 
 /**
  计算REF值
@@ -75,7 +75,7 @@ double calLlv(double value[][4], int length, int n, int index, int x);
  @param n 取前n个周期的值
  @return 返回ref值
  */
-double calRef(double value[], int length, int index, int n);
+double calRef(const double value[], int length, int index, int n);
 
 /**
  计算STD值
@@ -87,5 +87,43 @@ double calRef(double value[], int length, int index, int n);
  @return 返回计算值
  */
 double calStd(double x[], double n, int length, int index);
+
+/**
+ 计算平均绝对偏差
+ 
+ @param X 第一个参数
+ @param U 第二个参数
+ @param count N
+ @return 返回计算结果值
+ */
+double calAVEDEV(const double X[], const double U[], const int count);
+
+/**
+ 计算平滑指数移动平均
+ 
+ @param dataX 数据数组
+ @param countX 数组大小
+ @param N expmema(N)中的N的值
+ @param smooth 平滑值
+ @param expmema 存储计算后的值得数组
+ */
+void calEXPMEMA(const double dataX[],
+                const int countX,
+                const int N,
+                const double smooth,
+                double expmema[]);
+
+
+/**
+ 计算综合
+ 
+ @param data 数据数组
+ @param N 周期值
+ @param I 索引值
+ @return 总和值
+ */
+double calSum(const double data[],
+              const int N,
+              const int I);
 
 #endif /* YKIndicatorBaseLib_h */

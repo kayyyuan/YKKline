@@ -19,15 +19,15 @@
 		94560B7F1EE4E0D1005EA16A /* YKKLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94560B7B1EE4E0D1005EA16A /* YKKLineModel.m */; };
 		94560B871EE4E0DB005EA16A /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94560B831EE4E0DB005EA16A /* NSObject+YYModel.m */; };
 		94560B881EE4E0DB005EA16A /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 94560B851EE4E0DB005EA16A /* YYClassInfo.m */; };
-		94560B8B1EE4ED4F005EA16A /* CAShapeLayer+YKOHLCLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 94560B8A1EE4ED4F005EA16A /* CAShapeLayer+YKOHLCLayer.m */; };
-		94560B8E1EE4ED96005EA16A /* CAShapeLayer+YKCandleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 94560B8D1EE4ED96005EA16A /* CAShapeLayer+YKCandleLayer.m */; };
-		94560B911EE4F592005EA16A /* CATextLayer+YKTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 94560B901EE4F592005EA16A /* CATextLayer+YKTextLayer.m */; };
-		94560B941EE4F9DF005EA16A /* CAShapeLayer+YKBorderLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 94560B931EE4F9DF005EA16A /* CAShapeLayer+YKBorderLayer.m */; };
 		94560B9D1EE507BE005EA16A /* YKIndicatorBaseLib.c in Sources */ = {isa = PBXBuildFile; fileRef = 94560B9B1EE507BE005EA16A /* YKIndicatorBaseLib.c */; };
 		94560BA01EE507D3005EA16A /* YKIndicatorLib.c in Sources */ = {isa = PBXBuildFile; fileRef = 94560B9E1EE507D3005EA16A /* YKIndicatorLib.c */; };
 		947035871EE40725003617BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 947035851EE40725003617BB /* Main.storyboard */; };
 		947035891EE40725003617BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 947035881EE40725003617BB /* Assets.xcassets */; };
 		9470358C1EE40725003617BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9470358A1EE40725003617BB /* LaunchScreen.storyboard */; };
+		94DD4310204FF24300E0E4A4 /* YKCAShapeLayer+YKCandleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DD430F204FF24300E0E4A4 /* YKCAShapeLayer+YKCandleLayer.m */; };
+		94DD4313204FF2CC00E0E4A4 /* YKCATextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DD4312204FF2CC00E0E4A4 /* YKCATextLayer.m */; };
+		94DD4316204FF2E700E0E4A4 /* YKCAShapeLayer+YKBorderLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DD4315204FF2E700E0E4A4 /* YKCAShapeLayer+YKBorderLayer.m */; };
+		94DD4319204FF30300E0E4A4 /* YKCATextLayer+YKTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 94DD4318204FF30300E0E4A4 /* YKCATextLayer+YKTextLayer.m */; };
 		94F171981EE422CF00C81AFA /* YKCAShapeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F171931EE422CF00C81AFA /* YKCAShapeLayer.m */; };
 		94F171A91EE422E500C81AFA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F171A41EE422E500C81AFA /* AppDelegate.m */; };
 		94F171AA1EE422E500C81AFA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94F171A51EE422E500C81AFA /* Info.plist */; };
@@ -63,14 +63,6 @@
 		94560B841EE4E0DB005EA16A /* YYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYClassInfo.h; sourceTree = "<group>"; };
 		94560B851EE4E0DB005EA16A /* YYClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYClassInfo.m; sourceTree = "<group>"; };
 		94560B861EE4E0DB005EA16A /* YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYModel.h; sourceTree = "<group>"; };
-		94560B891EE4ED4F005EA16A /* CAShapeLayer+YKOHLCLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAShapeLayer+YKOHLCLayer.h"; sourceTree = "<group>"; };
-		94560B8A1EE4ED4F005EA16A /* CAShapeLayer+YKOHLCLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAShapeLayer+YKOHLCLayer.m"; sourceTree = "<group>"; };
-		94560B8C1EE4ED96005EA16A /* CAShapeLayer+YKCandleLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAShapeLayer+YKCandleLayer.h"; sourceTree = "<group>"; };
-		94560B8D1EE4ED96005EA16A /* CAShapeLayer+YKCandleLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAShapeLayer+YKCandleLayer.m"; sourceTree = "<group>"; };
-		94560B8F1EE4F592005EA16A /* CATextLayer+YKTextLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CATextLayer+YKTextLayer.h"; sourceTree = "<group>"; };
-		94560B901EE4F592005EA16A /* CATextLayer+YKTextLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CATextLayer+YKTextLayer.m"; sourceTree = "<group>"; };
-		94560B921EE4F9DF005EA16A /* CAShapeLayer+YKBorderLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAShapeLayer+YKBorderLayer.h"; sourceTree = "<group>"; };
-		94560B931EE4F9DF005EA16A /* CAShapeLayer+YKBorderLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAShapeLayer+YKBorderLayer.m"; sourceTree = "<group>"; };
 		94560B9B1EE507BE005EA16A /* YKIndicatorBaseLib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = YKIndicatorBaseLib.c; sourceTree = "<group>"; };
 		94560B9C1EE507BE005EA16A /* YKIndicatorBaseLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKIndicatorBaseLib.h; sourceTree = "<group>"; };
 		94560B9E1EE507D3005EA16A /* YKIndicatorLib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = YKIndicatorLib.c; sourceTree = "<group>"; };
@@ -79,6 +71,14 @@
 		947035861EE40725003617BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		947035881EE40725003617BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9470358B1EE40725003617BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		94DD430E204FF24300E0E4A4 /* YKCAShapeLayer+YKCandleLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YKCAShapeLayer+YKCandleLayer.h"; sourceTree = "<group>"; };
+		94DD430F204FF24300E0E4A4 /* YKCAShapeLayer+YKCandleLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "YKCAShapeLayer+YKCandleLayer.m"; sourceTree = "<group>"; };
+		94DD4311204FF2CC00E0E4A4 /* YKCATextLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YKCATextLayer.h; sourceTree = "<group>"; };
+		94DD4312204FF2CC00E0E4A4 /* YKCATextLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YKCATextLayer.m; sourceTree = "<group>"; };
+		94DD4314204FF2E700E0E4A4 /* YKCAShapeLayer+YKBorderLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YKCAShapeLayer+YKBorderLayer.h"; sourceTree = "<group>"; };
+		94DD4315204FF2E700E0E4A4 /* YKCAShapeLayer+YKBorderLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "YKCAShapeLayer+YKBorderLayer.m"; sourceTree = "<group>"; };
+		94DD4317204FF30300E0E4A4 /* YKCATextLayer+YKTextLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YKCATextLayer+YKTextLayer.h"; sourceTree = "<group>"; };
+		94DD4318204FF30300E0E4A4 /* YKCATextLayer+YKTextLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "YKCATextLayer+YKTextLayer.m"; sourceTree = "<group>"; };
 		94F171921EE422CF00C81AFA /* YKCAShapeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKCAShapeLayer.h; sourceTree = "<group>"; };
 		94F171931EE422CF00C81AFA /* YKCAShapeLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKCAShapeLayer.m; sourceTree = "<group>"; };
 		94F171A31EE422E500C81AFA /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -176,14 +176,14 @@
 			children = (
 				94F171921EE422CF00C81AFA /* YKCAShapeLayer.h */,
 				94F171931EE422CF00C81AFA /* YKCAShapeLayer.m */,
-				94560B891EE4ED4F005EA16A /* CAShapeLayer+YKOHLCLayer.h */,
-				94560B8A1EE4ED4F005EA16A /* CAShapeLayer+YKOHLCLayer.m */,
-				94560B8C1EE4ED96005EA16A /* CAShapeLayer+YKCandleLayer.h */,
-				94560B8D1EE4ED96005EA16A /* CAShapeLayer+YKCandleLayer.m */,
-				94560B8F1EE4F592005EA16A /* CATextLayer+YKTextLayer.h */,
-				94560B901EE4F592005EA16A /* CATextLayer+YKTextLayer.m */,
-				94560B921EE4F9DF005EA16A /* CAShapeLayer+YKBorderLayer.h */,
-				94560B931EE4F9DF005EA16A /* CAShapeLayer+YKBorderLayer.m */,
+				94DD4311204FF2CC00E0E4A4 /* YKCATextLayer.h */,
+				94DD4312204FF2CC00E0E4A4 /* YKCATextLayer.m */,
+				94DD430E204FF24300E0E4A4 /* YKCAShapeLayer+YKCandleLayer.h */,
+				94DD430F204FF24300E0E4A4 /* YKCAShapeLayer+YKCandleLayer.m */,
+				94DD4314204FF2E700E0E4A4 /* YKCAShapeLayer+YKBorderLayer.h */,
+				94DD4315204FF2E700E0E4A4 /* YKCAShapeLayer+YKBorderLayer.m */,
+				94DD4317204FF30300E0E4A4 /* YKCATextLayer+YKTextLayer.h */,
+				94DD4318204FF30300E0E4A4 /* YKCATextLayer+YKTextLayer.m */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -297,7 +297,7 @@
 				TargetAttributes = {
 					947035781EE40725003617BB = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = KR6EC3MJZK;
+						DevelopmentTeam = 424Z5YL2HP;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -342,12 +342,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				944919231EF225F8008D6E4D /* YKTimeLinePointModel.m in Sources */,
+				94DD4316204FF2E700E0E4A4 /* YKCAShapeLayer+YKBorderLayer.m in Sources */,
 				944919221EF225E9008D6E4D /* YKTimeChartModel.m in Sources */,
+				94DD4319204FF30300E0E4A4 /* YKCATextLayer+YKTextLayer.m in Sources */,
 				9449191D1EF224C4008D6E4D /* YKTimeChartView.m in Sources */,
 				94560B9D1EE507BE005EA16A /* YKIndicatorBaseLib.c in Sources */,
 				94560BA01EE507D3005EA16A /* YKIndicatorLib.c in Sources */,
 				94560B7E1EE4E0D1005EA16A /* YKCandlePointModel.m in Sources */,
-				94560B941EE4F9DF005EA16A /* CAShapeLayer+YKBorderLayer.m in Sources */,
 				94F171B01EE422EB00C81AFA /* YKKlineViewController.m in Sources */,
 				94F171AC1EE422E500C81AFA /* ViewController.m in Sources */,
 				944919171EF221AD008D6E4D /* YKKlineOriginalModel.m in Sources */,
@@ -356,15 +357,14 @@
 				9422E3B61EF23269004F9D75 /* YKSegmentView.m in Sources */,
 				94F171981EE422CF00C81AFA /* YKCAShapeLayer.m in Sources */,
 				94F171AB1EE422E500C81AFA /* main.m in Sources */,
+				94DD4310204FF24300E0E4A4 /* YKCAShapeLayer+YKCandleLayer.m in Sources */,
 				94F171A91EE422E500C81AFA /* AppDelegate.m in Sources */,
 				94560B881EE4E0DB005EA16A /* YYClassInfo.m in Sources */,
 				9449191A1EF22242008D6E4D /* YKTimelineOriginalModel.m in Sources */,
 				94560B7F1EE4E0D1005EA16A /* YKKLineModel.m in Sources */,
-				94560B911EE4F592005EA16A /* CATextLayer+YKTextLayer.m in Sources */,
-				94560B8B1EE4ED4F005EA16A /* CAShapeLayer+YKOHLCLayer.m in Sources */,
 				94F171B71EE4236500C81AFA /* YKKlineViewConfig.m in Sources */,
+				94DD4313204FF2CC00E0E4A4 /* YKCATextLayer.m in Sources */,
 				94F171B61EE4236500C81AFA /* UIColor+YKKlineThemeColor.m in Sources */,
-				94560B8E1EE4ED96005EA16A /* CAShapeLayer+YKCandleLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,11 +484,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = KR6EC3MJZK;
+				DEVELOPMENT_TEAM = 424Z5YL2HP;
 				INFOPLIST_FILE = "$(SRCROOT)/YKKline/Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.-.YKKline";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.-.YKKline0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "arm64 armv7 armv7s x86_64";
 			};
@@ -498,11 +498,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = KR6EC3MJZK;
+				DEVELOPMENT_TEAM = 424Z5YL2HP;
 				INFOPLIST_FILE = "$(SRCROOT)/YKKline/Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.-.YKKline";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.-.YKKline0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "arm64 armv7 armv7s x86_64";
 			};

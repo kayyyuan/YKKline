@@ -16,5 +16,7 @@
 
 + (UIColor *)kLineBackGroundColor;
 + (UIColor *)kLineBorderColor;
++ (UIColor *)kLineCandleRedColor;
++ (UIColor *)kLineCandleGreenColor;
 
 @end

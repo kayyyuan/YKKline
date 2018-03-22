@@ -7,12 +7,14 @@
 //
 
 #import "YKSegmentView.h"
+#import "UIColor+YKKlineThemeColor.h"
 
 @interface YKSegmentView()
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) NSArray *btnArray;
 @property (nonatomic, strong) NSArray *titleArray;
+@property (nonatomic, strong) UIView *idicatorView;
 
 @property (nonatomic, assign) NSUInteger oldIndex;
 @property (nonatomic, assign) NSUInteger newIndex;
@@ -43,15 +45,12 @@
         NSString *str = self.titleArray[idx];
         
         CGRect strRect = [self rectOfNSString:str attribute:attribute];
-        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(x, 0, strRect.size.width+30, CGRectGetHeight(self.frame))];
+        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(x, 0, strRect.size.width+30, CGRectGetHeight(self.frame) - 2)];
         btn.tag = idx + 1000;
-//        btn.layer.borderWidth = 1.f;
-//        btn.layer.borderColor = [UIColor yellowColor].CGColor;
         btn.titleLabel.font = [UIFont systemFontOfSize:12.f];
         [btn setTitle:str forState:UIControlStateNormal];
-        [btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
-        
+        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [btn setTitleColor:Color(51, 51, 255) forState:UIControlStateSelected];
         [btn addTarget:self action:@selector(didClickWitnBtn:) forControlEvents:UIControlEventTouchUpInside];
         
         x += (strRect.size.width+30);
@@ -67,6 +66,10 @@
     
     _oldIndex = 99999;
     _newIndex = 0;
+    
+    _idicatorView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.frame) - 2, 30, 2)];
+    _idicatorView.backgroundColor = Color(51, 51, 255);
+    [_scrollView addSubview:_idicatorView];
     
     [self didClickWitnBtn:self.btnArray[_newIndex]];
 }
@@ -92,7 +95,12 @@
     {
         CGPoint offsetPoint = CGPointMake(btn.center.x-CGRectGetWidth(_scrollView.frame)/2, 0);
         [_scrollView setContentOffset:offsetPoint animated:YES];
+        
     }
+    
+    [UIView animateWithDuration:0.3f animations:^{
+       _idicatorView.center = CGPointMake(btn.center.x, CGRectGetHeight(self.frame) - 2);
+    }];
 }
 
 - (NSArray *)titleArray

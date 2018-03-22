@@ -11,10 +11,10 @@
 #import "UIColor+YKKlineThemeColor.h"
 #import "YKKLineModel.h"
 #import "YKCandlePointModel.h"
-#import "CAShapeLayer+YKOHLCLayer.h"
-#import "CAShapeLayer+YKCandleLayer.h"
-#import "CATextLayer+YKTextLayer.h"
-#import "CAShapeLayer+YKBorderLayer.h"
+#import "YKCAShapeLayer+YKCandleLayer.h"
+#import "YKCATextLayer+YKTextLayer.h"
+#import "YKCAShapeLayer+YKBorderLayer.h"
+#import "YKCATextLayer.h"
 
 
 @interface YKKlineView ()
@@ -151,7 +151,7 @@
                                  CGRectGetHeight(priceRect));
         //计算价格
         NSString *str = [NSString stringWithFormat:@"%.2f", _mainMaxValue - idx * unitPrice];
-        CATextLayer *layer = [CATextLayer getTextLayerWithString:str
+        YKCATextLayer *layer = [YKCATextLayer getTextLayerWithString:str
                                                        textColor:[UIColor blackColor]
                                                         fontSize:9.f
                                                  backgroundColor:[UIColor clearColor]
@@ -191,20 +191,20 @@
     //循环绘制坐标点
     for (int idx = 0; idx < kLineDateArr.count; idx++)
     {
-        CATextLayer *textLayer = nil;
+        YKCATextLayer *textLayer = nil;
         
         if (idx == kLineDateArr.count-1)
         {//最后一个
             CGRect rect = CGRectMake(idx * unitW - strW, CGRectGetMaxY(_mainRect), strW, strH);
-            textLayer = [CATextLayer getTextLayerWithString:kLineDateArr[idx] textColor:[UIColor blackColor] fontSize:9.f backgroundColor:[UIColor clearColor] frame:rect];
+            textLayer = [YKCATextLayer getTextLayerWithString:kLineDateArr[idx] textColor:[UIColor blackColor] fontSize:9.f backgroundColor:[UIColor clearColor] frame:rect];
         }else if(idx == 0)
         {//第一个
             CGRect rect = CGRectMake(idx * unitW, CGRectGetMaxY(_mainRect), strW, strH);
-            textLayer = [CATextLayer getTextLayerWithString:kLineDateArr[idx] textColor:[UIColor blackColor] fontSize:9.f backgroundColor:[UIColor clearColor] frame:rect];
+            textLayer = [YKCATextLayer getTextLayerWithString:kLineDateArr[idx] textColor:[UIColor blackColor] fontSize:9.f backgroundColor:[UIColor clearColor] frame:rect];
         }else
         {//中间
             CGRect rect = CGRectMake(idx * unitW - strW/2, CGRectGetMaxY(_mainRect), strW, strH);
-            textLayer = [CATextLayer getTextLayerWithString:kLineDateArr[idx] textColor:[UIColor blackColor] fontSize:9.f backgroundColor:[UIColor clearColor] frame:rect];
+            textLayer = [YKCATextLayer getTextLayerWithString:kLineDateArr[idx] textColor:[UIColor blackColor] fontSize:9.f backgroundColor:[UIColor clearColor] frame:rect];
         }
         
         [self.mainLayer addSublayer:textLayer];
@@ -224,7 +224,7 @@
     for (int idx = 0; idx< [YKKlineViewConfig kLineCandleCount]; idx++)
     {
         YKCandlePointModel *model = pointModelArr[idx];
-        CAShapeLayer *layer = [CAShapeLayer getCandleLayerWithPointModel:model candleW:candleW];
+        YKCAShapeLayer *layer = [YKCAShapeLayer getCandleLayerWithPointModel:model candleW:candleW];
         
         [self.mainLayer addSublayer:layer];
     }
@@ -243,7 +243,7 @@
     for (int idx = 0; idx< [YKKlineViewConfig kLineCandleCount]; idx++)
     {
         YKCandlePointModel *model = pointModelArr[idx];
-        CAShapeLayer *layer = [CAShapeLayer getOHLCLayerWithPointModel:model candleW:candleW];
+        YKCAShapeLayer *layer = [YKCAShapeLayer getOHLCLayerWithPointModel:model candleW:candleW];
         
         [self.mainLayer addSublayer:layer];
     }
@@ -437,9 +437,9 @@
     CGRect timeRect = CGRectMake(CGRectGetMinX(maskTimeRect)+5.f, CGRectGetMinY(maskTimeRect)+2.5f, CGRectGetWidth(timeStrRect), CGRectGetHeight(timeStrRect));
     CGRect priceRect = CGRectMake(CGRectGetMinX(maskPriceRect)+5.f, CGRectGetMinY(maskPriceRect)+2.5f, CGRectGetWidth(priceStrRect), CGRectGetHeight(priceStrRect));
     //生成时间方块图层
-    CAShapeLayer *timeLayer = [CAShapeLayer getRectLayerWithRect:maskTimeRect dataRect:timeRect dataStr:timeStr fontSize:9.f textColor:[UIColor whiteColor] backColor:[UIColor blackColor]];
+    YKCAShapeLayer *timeLayer = [YKCAShapeLayer getRectLayerWithRect:maskTimeRect dataRect:timeRect dataStr:timeStr fontSize:9.f textColor:[UIColor whiteColor] backColor:[UIColor blackColor]];
     //生成价格方块图层
-    CAShapeLayer *priceLayer = [CAShapeLayer getRectLayerWithRect:maskPriceRect dataRect:priceRect dataStr:priceStr fontSize:9.f textColor:[UIColor whiteColor] backColor:[UIColor blackColor]];
+    YKCAShapeLayer *priceLayer = [YKCAShapeLayer getRectLayerWithRect:maskPriceRect dataRect:priceRect dataStr:priceStr fontSize:9.f textColor:[UIColor whiteColor] backColor:[UIColor blackColor]];
     
     //把3个图层全部添加到十字叉图层中
     [self.crossViewLayer addSublayer:timeLayer];

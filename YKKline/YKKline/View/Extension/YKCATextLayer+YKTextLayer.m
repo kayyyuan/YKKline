@@ -1,15 +1,16 @@
 //
-//  CATextLayer+YKTextLayer.m
+//  YKCATextLayer+YKTextLayer.m
 //  YKKline
 //
-//  Created by nethanhan on 2017/6/5.
-//  Copyright © 2017年 nethanhan. All rights reserved.
+//  Created by nethanhan on 2018/3/7.
+//  Copyright © 2018年 nethanhan. All rights reserved.
 //
 
-#import "CATextLayer+YKTextLayer.h"
+#import "YKCATextLayer+YKTextLayer.h"
+#import <UIKit/UIColor.h>
 #import <UIKit/UIScreen.h>
 
-@implementation CATextLayer (YKTextLayer)
+@implementation YKCATextLayer (YKTextLayer)
 
 /**
  绘制文字
@@ -20,14 +21,14 @@
  @param frame 文字frame
  @return 返回textLayer
  */
-+ (CATextLayer *)getTextLayerWithString:(NSString *)text
++ (YKCATextLayer *)getTextLayerWithString:(NSString *)text
                               textColor:(UIColor *)textColor
                                fontSize:(NSInteger)fontSize
                         backgroundColor:(UIColor *)bgColor
                                   frame:(CGRect)frame
 {
     //初始化一个CATextLayer
-    CATextLayer *textLayer = [CATextLayer layer];
+    YKCATextLayer *textLayer = [YKCATextLayer layer];
     //设置文字frame
     textLayer.frame = frame;
     //设置文字

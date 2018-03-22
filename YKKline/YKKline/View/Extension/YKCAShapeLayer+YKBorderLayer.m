@@ -1,25 +1,25 @@
 //
-//  CAShapeLayer+YKBorderLayer.m
+//  YKCAShapeLayer+YKBorderLayer.m
 //  YKKline
 //
-//  Created by nethanhan on 2017/6/5.
-//  Copyright © 2017年 nethanhan. All rights reserved.
+//  Created by nethanhan on 2018/3/7.
+//  Copyright © 2018年 nethanhan. All rights reserved.
 //
 
-#import "CAShapeLayer+YKBorderLayer.h"
+#import "YKCAShapeLayer+YKBorderLayer.h"
 #import <UIKit/UIBezierPath.h>
 #import <UIKit/UIScreen.h>
 
-@implementation CAShapeLayer (YKBorderLayer)
+@implementation YKCAShapeLayer (YKBorderLayer)
 
-+ (CAShapeLayer *)getRectLayerWithRect:(CGRect)frameRect
-                              dataRect:(CGRect)dataRect
-                               dataStr:(NSString *)dataStr
-                              fontSize:(CGFloat)fontSize
-                             textColor:(UIColor *)textColor
-                             backColor:(UIColor *)backColor
++ (YKCAShapeLayer *)getRectLayerWithRect:(CGRect)frameRect
+                                dataRect:(CGRect)dataRect
+                                 dataStr:(NSString *)dataStr
+                                fontSize:(CGFloat)fontSize
+                               textColor:(UIColor *)textColor
+                               backColor:(UIColor *)backColor
 {
-    CAShapeLayer *layer = [CAShapeLayer layer];
+    YKCAShapeLayer *layer = [YKCAShapeLayer layer];
     
     UIBezierPath *path = [UIBezierPath bezierPathWithRect:frameRect];
     layer.path = path.CGPath;

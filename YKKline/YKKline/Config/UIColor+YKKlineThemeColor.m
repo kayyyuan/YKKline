@@ -20,4 +20,14 @@
     return Color(222, 222, 222);
 }
 
++ (UIColor *)kLineCandleRedColor
+{
+    return ColorWithHex(0xff4848);
+}
+
++ (UIColor *)kLineCandleGreenColor
+{
+    return ColorWithHex(0x00c053);
+}
+
 @end
