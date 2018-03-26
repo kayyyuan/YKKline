@@ -382,4 +382,46 @@ void YKCalROCIndicator(const double PRICE[][4],
                        double ROC[],
                        double ROCMA[]);
 
+/**
+ 计算乾坤线
+ 
+ @param PRICE HLOC数组
+ @param count 数组个数
+ @param mvqian1 乾坤乾1
+ @param mvqian2 乾坤乾2
+ @param mvkun1 乾坤坤1
+ @param mvkun2 乾坤坤2
+ @param duo 乾坤多线
+ @param kong 乾坤空线
+ */
+void YKCalQIANKUNIndicator(const double PRICE[][4],
+                      const int count,
+                      double mvqian1[],
+                      double mvqian2[],
+                      double mvkun1[],
+                      double mvkun2[],
+                      double duo[],
+                      double kong[]);
+
+/**
+ 计算狙击线
+ 
+ @param PRICE HLOC价格数组
+ @param count 数组个数
+ @param kuai 快线
+ @param man 慢线
+ @param duo 多线
+ @param duo1 多1线
+ @param kong 空线
+ @param kong1 空1线
+ */
+void YKCalJUJIIndicator(const double PRICE[][4],
+                   const int count,
+                   double kuai[],
+                   double man[],
+                   double duo[],
+                   double duo1[],
+                   double kong[],
+                   double kong1[]);
+
 #endif /* YKIndicatorLib_h */

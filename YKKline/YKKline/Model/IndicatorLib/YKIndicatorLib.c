@@ -1365,3 +1365,493 @@ void YKCalROCIndicator(const double PRICE[][4],
     calMa(ROC, count, M, ROCMA);
 }
 
+#pragma mark QIANKUN 乾坤线
+
+/**
+ 计算乾坤-BF值
+ 
+ @param PRICE HLOC价格数组
+ @param count 数组个数
+ @param bf 保存bf值的数组
+ */
+void BF(const double PRICE[][4],
+        const int count,
+        double bf[])
+{
+    double CLOSE[count];
+    for (int i=0; i<count; i++)
+    {
+        CLOSE[i] = PRICE[i][3];
+    }
+    for (int i=0; i<count; i++)
+    {
+        double ref = calRef(CLOSE, count, i, 1);
+        bf[i] = fmax(fmax(PRICE[i][0] - PRICE[i][1], fabs(ref - PRICE[i][0])), fabs(ref- PRICE[i][1]));
+    }
+}
+
+
+/**
+ 计算乾坤-BF值的指数移动平均
+ 
+ @param PRICE HLOC价格数组
+ @param count 数组个数
+ @param N 90日
+ @param mvbf90 保存bf指数移动平均的数组
+ */
+void MVBF90(const double PRICE[][4],
+            const int count,
+            const int N,
+            double mvbf90[])
+{
+    double bfArr[count];
+    BF(PRICE, count, bfArr);
+    calEma(bfArr, count, N, mvbf90);
+}
+
+
+/**
+ 计算乾坤-乾值
+ 
+ @param PRICE HLOC价格数组
+ @param count 数组个数
+ @param argv 乘率参数
+ @param qian 保存乾值
+ */
+void QIAN(const double PRICE[][4],
+          const int count,
+          const double argv,
+          double qian[])
+{
+    double mvbf90[count];
+    mvbf90[0] = PRICE[0][3];
+    MVBF90(PRICE, count, 90, mvbf90);
+    double priceSumArr[count];
+    
+    double qianEma[count];
+    qianEma[0] = PRICE[0][3];
+    
+    for (int i=0; i<count; i++)
+    {
+        priceSumArr[i] = (PRICE[i][0] + PRICE[i][1] + PRICE[i][2] + PRICE[i][3]) / 4;
+    }
+    
+    calEma(priceSumArr, count, 10, qianEma);
+    
+    for (int i=0; i<count; i++)
+    {
+        qian[i] = qianEma[i] + mvbf90[i] * argv;
+    }
+}
+
+
+/**
+ 计算乾坤-坤值
+ 
+ @param PRICE HLOC价格数组
+ @param count 数组个数
+ @param argv 乘率参数
+ @param kun 保存坤值
+ */
+void KUN(const double PRICE[][4],
+         const int count,
+         const double argv,
+         double kun[])
+{
+    double mvbf90[count];
+    mvbf90[0] = PRICE[0][3];
+    MVBF90(PRICE, count, 90, mvbf90);
+    
+    double priceSumArr[count];
+    
+    double kunEma[count];
+    kunEma[0] = PRICE[0][3];
+    
+    for (int i=0; i<count; i++)
+    {
+        priceSumArr[i] = (PRICE[i][0] + PRICE[i][1] + PRICE[i][2] + PRICE[i][3]) / 4;
+    }
+    
+    calEma(priceSumArr, count, 10, kunEma);
+    
+    for (int i=0; i<count; i++)
+    {
+        kun[i] = kunEma[i] - mvbf90[i] * argv;
+    }
+}
+
+
+/**
+ 计算乾坤线-中值
+ 
+ @param PRICE HLOC数据数组
+ @param count 数组个数
+ @param zhong 保存中值
+ */
+void ZHONG(const double PRICE[][4],
+           const int count,
+           double zhong[])
+{
+    double priceSumArr[count];
+    for (int i=0; i<count; i++)
+    {
+        priceSumArr[i] = (PRICE[i][0] + PRICE[i][1] + PRICE[i][2] + PRICE[i][3]) / 4.f;
+    }
+    
+    calMa(priceSumArr, count, 2 * 10, zhong);
+}
+
+
+/**
+ 计算乾坤-坤1线-坤值的指数移动平均
+ 
+ @param PRICE HLOC数组
+ @param count 数组个数
+ @param mvkun1 保存坤1线指数移动平均
+ */
+void MVKUN1(const double PRICE[][4],
+            const int count,
+            double mvkun1[])
+{
+    double kun1Arr[count];
+    KUN(PRICE, count, 2.f, kun1Arr);
+    
+    calEma(kun1Arr, count, 10, mvkun1);
+}
+
+
+/**
+ 计算乾坤-坤2线-坤值的指数移动平均
+ 
+ @param PRICE HLOC数组
+ @param count 数组个数
+ @param mvkun2 保存坤2线指数移动平均
+ */
+void MVKUN2(const double PRICE[][4],
+            const int count,
+            double mvkun2[])
+{
+    double kun2Arr[count];
+    KUN(PRICE, count, 3.2, kun2Arr);
+    
+    calEma(kun2Arr, count, 10, mvkun2);
+}
+
+
+/**
+ 计算乾坤-乾1线-乾值的指数移动平均
+ 
+ @param PRICE HLOC数组
+ @param count 数组个数
+ @param mvqian1 保存乾1线
+ */
+void MVQIAN1(const double PRICE[][4],
+             const int count,
+             double mvqian1[])
+{
+    double qian1Arr[count];
+    
+    QIAN(PRICE, count, 3.2f, qian1Arr);
+    calEma(qian1Arr, count, 10, mvqian1);
+}
+
+/**
+ 计算乾坤-乾2线-乾值的指数移动平均
+ 
+ @param PRICE HLOC数组
+ @param count 数组个数
+ @param mvqian2 保存乾2线
+ */
+void MVQIAN2(const double PRICE[][4],
+             const int count,
+             double mvqian2[])
+{
+    double qian2Arr[count];
+    
+    QIAN(PRICE, count, 2.f, qian2Arr);
+    
+    calEma(qian2Arr, count, 10, mvqian2);
+}
+
+
+/**
+ 计算乾坤-多值
+ 
+ @param PRICE HLOC数组
+ @param count 数组个数
+ @param zhong 中值
+ @param duo 保存多值
+ */
+void QKDUO(const double PRICE[][4],
+           const int count,
+           const double zhong[],
+           double duo[])
+{
+    for (int i=0; i<count; i++)
+    {
+        if (zhong[i] > PRICE[i][3])
+        {
+            duo[i] = zhong[i];
+        }else
+        {
+            duo[i] = 0.f;
+        }
+    }
+}
+
+
+/**
+ 计算乾坤-空值
+ 
+ @param PRICE HLOC数组
+ @param count 数组个数
+ @param zhong 中值
+ @param kong 保存空值
+ */
+void QKKONG(const double PRICE[][4],
+            const int count,
+            const double zhong[],
+            double kong[])
+{
+    for (int i=0; i<count; i++)
+    {
+        if (zhong[i] < PRICE[i][3])
+        {
+            kong[i] = zhong[i];
+        }else
+        {
+            kong[i] = 0.f;
+        }
+    }
+}
+
+
+/**
+ 计算乾坤线
+ 
+ @param PRICE HLOC数组
+ @param count 数组个数
+ @param mvqian1 乾坤乾1
+ @param mvqian2 乾坤乾2
+ @param mvkun1 乾坤坤1
+ @param mvkun2 乾坤坤2
+ @param duo 乾坤多线
+ @param kong 乾坤空线
+ */
+void YKCalQIANKUNIndicator(const double PRICE[][4],
+                      const int count,
+                      double mvqian1[],
+                      double mvqian2[],
+                      double mvkun1[],
+                      double mvkun2[],
+                      double duo[],
+                      double kong[])
+{
+    mvqian1[0] = PRICE[0][3];
+    mvqian2[0] = PRICE[0][3];
+    MVQIAN1(PRICE, count, mvqian1);
+    MVQIAN2(PRICE, count, mvqian2);
+    
+    mvkun1[0] = PRICE[0][3];
+    mvkun2[0] = PRICE[0][3];
+    MVKUN1(PRICE, count, mvkun1);
+    MVKUN2(PRICE, count, mvkun2);
+    
+    double zhong[count];
+    ZHONG(PRICE, count, zhong);
+    QKDUO(PRICE, count, zhong, duo);
+    QKKONG(PRICE, count, zhong, kong);
+}
+
+#pragma mark - JUJI
+
+/**
+ 计算狙击-定义值
+ 
+ @param PRICE HLOC价格数组
+ @param count 数组个数
+ @param dingyi 保存定义值
+ */
+void DINGYI(const double PRICE[][4],
+            const int count,
+            double dingyi[])
+{
+    for (int i=0; i<count; i++)
+    {
+        double llv = calLlv(PRICE, count, 15, i, 1);
+        double hhv = calHhv(PRICE, count, 15, i, 1);
+        if ((llv == hhv) || (llv-hhv == 0))
+        {
+            dingyi[i] = 0.f;
+        } else
+        {
+            dingyi[i] = (PRICE[i][3] - llv) / (hhv - llv) * 100.f;
+        }
+    }
+}
+
+
+/**
+ 计算狙击-快线
+ 
+ @param PRICE HLOC价格数组
+ @param count 数组个数
+ @param kuai 保存快线
+ */
+void KUAI(const double PRICE[][4],
+          const int count,
+          double kuai[])
+{
+    double dingyi[count];
+    DINGYI(PRICE, count, dingyi);
+    
+    calMa(dingyi, count, 5, kuai);
+}
+
+/**
+ 计算狙击-慢线
+ 
+ @param PRICE HLOC价格数组
+ @param count 数组个数
+ @param kuai 快线数组
+ @param man 保存慢线
+ */
+void MAN(const double PRICE[][4],
+         const int count,
+         const double kuai[],
+         double man[])
+{
+    calMa(kuai, count, 3, man);
+}
+
+/**
+ 计算狙击-多线
+ 
+ @param kuai 快线数组
+ @param man 慢线数组
+ @param count 数组个数
+ @param duo 保存多线
+ */
+void JJDUO(const double kuai[],
+           const double man[],
+           const int count,
+           double duo[])
+{
+    for (int i=0; i<count; i++)
+    {
+        if (kuai[i] >= man[i])
+        {
+            duo[i] = kuai[i];
+        } else
+        {
+            duo[i] = INT32_MAX;
+        }
+    }
+}
+
+/**
+ 计算狙击-多1线
+ 
+ @param kuai 快线数组
+ @param man 慢线数组
+ @param count 数组个数
+ @param duo1 保存多1线
+ */
+void JJDUO1(const double kuai[],
+            const double man[],
+            const int count,
+            double duo1[])
+{
+    for (int i=0; i<count; i++)
+    {
+        if (kuai[i] >= man[i])
+        {
+            duo1[i] = man[i];
+        } else
+        {
+            duo1[i] = INT32_MAX;
+        }
+    }
+}
+
+/**
+ 计算狙击-空线
+ 
+ @param kuai 快线数组
+ @param man 慢线数组
+ @param count 数组个数
+ @param kong 保存空线
+ */
+void JJKONG(const double kuai[],
+            const double man[],
+            const int count,
+            double kong[])
+{
+    for (int i=0; i<count; i++)
+    {
+        if (kuai[i] <= man[i])
+        {
+            kong[i] = kuai[i];
+        } else
+        {
+            kong[i] = INT32_MAX;
+        }
+    }
+}
+
+/**
+ 计算狙击-空1线
+ 
+ @param kuai 快线数组
+ @param man 慢线数组
+ @param count 数组个数
+ @param kong1 保存空1线
+ */
+void JJKONG1(const double kuai[],
+             const double man[],
+             const int count ,
+             double kong1[])
+{
+    for (int i=0; i<count; i++)
+    {
+        if (kuai[i] <= man[i])
+        {
+            kong1[i] = man[i];
+        } else
+        {
+            kong1[i] = INT32_MAX;
+        }
+    }
+}
+
+
+/**
+ 计算狙击线
+ 
+ @param PRICE HLOC价格数组
+ @param count 数组个数
+ @param kuai 快线
+ @param man 慢线
+ @param duo 多线
+ @param duo1 多1线
+ @param kong 空线
+ @param kong1 空1线
+ */
+void YKCalJUJIIndicator(const double PRICE[][4],
+                   const int count,
+                   double kuai[],
+                   double man[],
+                   double duo[],
+                   double duo1[],
+                   double kong[],
+                   double kong1[])
+{
+    
+    KUAI(PRICE, count, kuai);
+    MAN(PRICE, count, kuai, man);
+    JJDUO(kuai, man, count, duo);
+    JJDUO1(kuai, man, count, duo1);
+    JJKONG(kuai, man, count, kong);
+    JJKONG1(kuai, man, count, kong1);
+}
+

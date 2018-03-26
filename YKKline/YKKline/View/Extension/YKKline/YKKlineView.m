@@ -479,7 +479,7 @@
 - (CAShapeLayer *)mainLayer
 {
     if (!_mainLayer) {
-        _mainLayer = [CAShapeLayer layer];
+        _mainLayer = [YKCAShapeLayer layer];
     }
     
     return _mainLayer;

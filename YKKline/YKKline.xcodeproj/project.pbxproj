@@ -160,6 +160,17 @@
 			path = YKKline;
 			sourceTree = "<group>";
 		};
+		94CA3EFC2068FE6F0023BBDD /* IndicatorLib */ = {
+			isa = PBXGroup;
+			children = (
+				94560B9B1EE507BE005EA16A /* YKIndicatorBaseLib.c */,
+				94560B9C1EE507BE005EA16A /* YKIndicatorBaseLib.h */,
+				94560B9E1EE507D3005EA16A /* YKIndicatorLib.c */,
+				94560B9F1EE507D3005EA16A /* YKIndicatorLib.h */,
+			);
+			path = IndicatorLib;
+			sourceTree = "<group>";
+		};
 		94F171901EE422CF00C81AFA /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +211,7 @@
 		94F171A11EE422DE00C81AFA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				94CA3EFC2068FE6F0023BBDD /* IndicatorLib */,
 				94560B811EE4E0DB005EA16A /* YYModel */,
 				94560B781EE4E0D1005EA16A /* YKCandlePointModel.h */,
 				94560B791EE4E0D1005EA16A /* YKCandlePointModel.m */,
@@ -207,10 +219,6 @@
 				94560B7B1EE4E0D1005EA16A /* YKKLineModel.m */,
 				94560B761EE4E0B6005EA16A /* kLine.json */,
 				944919241EF22660008D6E4D /* timeLineData.json */,
-				94560B9B1EE507BE005EA16A /* YKIndicatorBaseLib.c */,
-				94560B9C1EE507BE005EA16A /* YKIndicatorBaseLib.h */,
-				94560B9E1EE507D3005EA16A /* YKIndicatorLib.c */,
-				94560B9F1EE507D3005EA16A /* YKIndicatorLib.h */,
 				944919151EF221AD008D6E4D /* YKKlineOriginalModel.h */,
 				944919161EF221AD008D6E4D /* YKKlineOriginalModel.m */,
 				944919181EF22242008D6E4D /* YKTimelineOriginalModel.h */,

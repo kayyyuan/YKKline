@@ -17,9 +17,7 @@
 @interface YKKlineViewController ()
 
 @property (nonatomic, strong) YKKlineView *kLineView;
-
 @property (nonatomic, strong) YKTimeChartView *timeChartView;
-
 @property (nonatomic, strong) YKSegmentView *segmentView;
 
 @end
@@ -32,26 +30,50 @@ static float kLineGlobalOffset = 0.f;
 {
     [super viewDidLoad];
     
-//    [self initTimeLineView];
-    
-    [self initKLineView];
-    
-//    [self initSegmentView];
+//    [self addTimeLineView];
+
+    [self addKLineView];
+
+    [self addSegmentView];
 }
 
-- (void)initSegmentView
+/**
+ 添加K线视图
+ */
+- (void)addKLineView
 {
-    _segmentView = [[YKSegmentView alloc] initWithFrame:CGRectMake(14, 22, CGRectGetWidth(self.view.frame)-28, 50)];
+    YKKlineView *kLineView = [[YKKlineView alloc] initWithFrame:CGRectMake(14,22+50,CGRectGetWidth(self.view.frame)-28,CGRectGetHeight(self.view.frame) - 22 - 14 - 50)];
+    
+    kLineView.backgroundColor = [UIColor kLineBackGroundColor];
+    _kLineView = kLineView;
+    
+    [self.view addSubview:_kLineView];
+    
+    _kLineView.kLineModelArr = [YKKlineOriginalModel getKLineModelArr];
+    [self kLineViewAddGesture];
+    
+    [_kLineView drawWithMainType:KLineMainCandle];
+}
+
+/**
+ 添加分类选择视图
+ */
+- (void)addSegmentView
+{
+    _segmentView = [[YKSegmentView alloc] initWithFrame:CGRectMake(14, 22, CGRectGetWidth(self.view.frame)-28, 40)];
     
     [self.view addSubview:_segmentView];
 }
 
-- (void)initTimeLineView
+/**
+ 添加分时线视图
+ */
+- (void)addTimeLineView
 {
     double yc = 0.f;
     NSArray *arr = [YKTimelineOriginalModel getTimeChartModelArrAtYc:&yc];
     
-    CGRect rect = CGRectMake(14, 22+50, CGRectGetWidth(self.view.frame)-28, CGRectGetHeight(self.view.frame) - 22 - 14-50);
+    CGRect rect = CGRectMake(14, 22+50, CGRectGetWidth(self.view.frame)-28, CGRectGetHeight(self.view.frame) - 22 - 14 - 50);
     _timeChartView = [[YKTimeChartView alloc] initWithFrame:rect];
     _timeChartView.yc = yc;
     _timeChartView.timeCharModelArr = arr;
@@ -115,22 +137,6 @@ static float kLineGlobalOffset = 0.f;
         //当抬起头后，清理十字叉
         [_timeChartView clearTicks];
     }
-}
-
-#pragma mark - 初始化k线
-
-- (void)initKLineView
-{
-    YKKlineView *kLineView = [[YKKlineView alloc] initWithFrame:CGRectMake(14,22+50,CGRectGetWidth(self.view.frame)-28,CGRectGetHeight(self.view.frame) - 22 - 14-50)];
-    kLineView.backgroundColor = [UIColor kLineBackGroundColor];
-    _kLineView = kLineView;
-    
-    [self.view addSubview:_kLineView];
-    
-    _kLineView.kLineModelArr = [YKKlineOriginalModel getKLineModelArr];
-    [self kLineViewAddGesture];
-    
-    [_kLineView drawWithMainType:KLineMainCandle];
 }
 
 #pragma mark - k线手势响应
