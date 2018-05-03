@@ -19,6 +19,32 @@ typedef NS_ENUM(NSUInteger, KLineMainType) {
     KLineMainOHLC,
 };
 
+/**
+ k线主图指标类型
+
+ - KLineMainIndicatorMA: MA指标
+ - KLineMainIndicatorBOLL: BOLL指标
+ - KLineMainIndicatorQIANKUN: QIANKUN指标
+ */
+typedef NS_ENUM(NSUInteger, KLineMainIndicatorType){
+    KLineMainIndicatorMA = 1000,
+    KLineMainIndicatorBOLL,
+    KLineMainIndicatorQIANKUN
+};
+
+/**
+ k线副图指标类型
+
+ - KLineAccessoryIndicatorMACD: MACD指标
+ - KLineAccessoryIndicatorKDJ: KDJ指标
+ - KLineAccessoryIndicatorJUJI: JUJI指标
+ */
+typedef NS_ENUM(NSUInteger, KLineAccessoryIndicatorType){
+    KLineAccessoryIndicatorMACD = 1000,
+    KLineAccessoryIndicatorKDJ,
+    KLineAccessoryIndicatorJUJI
+};
+
 @interface YKKlineView : UIView
 
 /**
@@ -28,10 +54,12 @@ typedef NS_ENUM(NSUInteger, KLineMainType) {
 
 /**
  绘制K线
- 
+
  @param mainType 主图类型
+ @param mainIndicatorType 主图指标
+ @param accessoryIndicatorType 副图指标
  */
-- (void)drawWithMainType:(KLineMainType)mainType;
+- (void)drawWithMainType:(KLineMainType)mainType mainIndicatorType:(KLineMainIndicatorType)mainIndicatorType accessoryIndicatorType:(KLineAccessoryIndicatorType)accessoryIndicatorType;
 
 /**
  向右拖拽

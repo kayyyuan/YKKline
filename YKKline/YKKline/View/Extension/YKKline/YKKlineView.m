@@ -33,6 +33,10 @@
 @property (nonatomic, assign) float mainMaxValue;
 /**主图最小值*/
 @property (nonatomic, assign) float mainMinValue;
+/**副图最大值*/
+@property (nonatomic, assign) float accessoryMaxValue;
+/**副图最小值*/
+@property (nonatomic, assign) float accessoryMinValue;
 /**开始索引*/
 @property (nonatomic, assign) int startIndex;
 /**结束索引*/
@@ -72,14 +76,19 @@
     _endIndex = (int)kLineModelArr.count;
 }
 
-- (void)drawWithMainType:(KLineMainType)mainType
+- (void)drawWithMainType:(KLineMainType)mainType mainIndicatorType:(KLineMainIndicatorType)mainIndicatorType accessoryIndicatorType:(KLineAccessoryIndicatorType)accessoryIndicatorType
 {
     //保存主图类型
     _currentMainType = mainType;
     
-    //求出最大最小值
+    //求出主图最大最小值
     _mainMinValue = (float)INT32_MAX;
     _mainMaxValue = (float)INT32_MIN;
+    
+    //求出副图最大最小值
+    _accessoryMinValue = (float)INT32_MAX;
+    _accessoryMaxValue = (float)INT32_MIN;
+    
     for (int idx=_startIndex; idx<_endIndex; idx++)
     {
         YKKLineModel *model = self.kLineModelArr[idx];
@@ -92,6 +101,97 @@
             _mainMaxValue = model.high;
         }
     }
+    
+    switch (mainIndicatorType) {
+        case KLineMainIndicatorMA:
+        {
+            for (int idx=_startIndex; idx<_endIndex; idx++)
+            {
+                YKKLineModel *model = self.kLineModelArr[idx];
+                
+                float tempMax = [self getMaxValue:[NSNumber numberWithFloat:model.MA_MA1], [NSNumber numberWithFloat:model.MA_MA2], [NSNumber numberWithFloat:model.MA_MA3],nil];
+                float tempMin = [self getMinValue:[NSNumber numberWithFloat:model.MA_MA1], [NSNumber numberWithFloat:model.MA_MA2], [NSNumber numberWithFloat:model.MA_MA3],nil];
+                if (_mainMinValue > tempMin)
+                {
+                    _mainMinValue = tempMin;
+                }
+                if (_mainMaxValue < tempMax)
+                {
+                    _mainMaxValue = tempMax;
+                }
+            }
+        }
+            break;
+        case KLineMainIndicatorBOLL:
+            break;
+        case KLineMainIndicatorQIANKUN:
+        {
+            for (int idx=_startIndex; idx<_endIndex; idx++)
+            {
+                YKKLineModel *model = self.kLineModelArr[idx];
+                
+                float tempMax = [self getMaxValue:[NSNumber numberWithFloat:model.QK_DUO], [NSNumber numberWithFloat:model.QK_KONG], [NSNumber numberWithFloat:model.QK_KUN1], [NSNumber numberWithFloat:model.QK_KUN2], [NSNumber numberWithFloat:model.QK_QIAN1], [NSNumber numberWithFloat:model.QK_QIAN2], nil];
+                float tempMin = [self getMinValue:[NSNumber numberWithFloat:model.QK_DUO], [NSNumber numberWithFloat:model.QK_KONG], [NSNumber numberWithFloat:model.QK_KUN1], [NSNumber numberWithFloat:model.QK_KUN2], [NSNumber numberWithFloat:model.QK_QIAN1], [NSNumber numberWithFloat:model.QK_QIAN2], nil];
+                if (_mainMinValue > tempMin)
+                {
+                    _mainMinValue = tempMin;
+                }
+                if (_mainMaxValue < tempMax)
+                {
+                    _mainMaxValue = tempMax;
+                }
+            }
+        }
+            break;
+        default:
+            break;
+    }
+    
+    switch (accessoryIndicatorType) {
+        case KLineAccessoryIndicatorKDJ:
+        {
+            for (int idx=_startIndex; idx<_endIndex; idx++)
+            {
+                YKKLineModel *model = self.kLineModelArr[idx];
+                
+                float tempMax = [self getMaxValue:[NSNumber numberWithFloat:model.KDJ_K], [NSNumber numberWithFloat:model.KDJ_D], [NSNumber numberWithFloat:model.KDJ_J],nil];
+                float tempMin = [self getMinValue:[NSNumber numberWithFloat:model.KDJ_K], [NSNumber numberWithFloat:model.KDJ_D], [NSNumber numberWithFloat:model.KDJ_J],nil];
+                if (_accessoryMinValue > tempMin)
+                {
+                    _accessoryMinValue = tempMin;
+                }
+                if (_accessoryMaxValue < tempMax)
+                {
+                    _accessoryMaxValue = tempMax;
+                }
+            }
+        }
+            break;
+        case KLineAccessoryIndicatorMACD:
+            break;
+        case KLineAccessoryIndicatorJUJI:
+        {
+            for (int idx=_startIndex; idx<_endIndex; idx++)
+            {
+                YKKLineModel *model = self.kLineModelArr[idx];
+                
+                float tempMax = [self getMaxValue:[NSNumber numberWithFloat:model.JJ_DUO], [NSNumber numberWithFloat:model.JJ_DUO1], [NSNumber numberWithFloat:model.JJ_KONG],[NSNumber numberWithFloat:model.JJ_KONG1], [NSNumber numberWithFloat:model.JJ_KUAI], [NSNumber numberWithFloat:model.JJ_MAN],nil];
+                float tempMin = [self getMinValue:[NSNumber numberWithFloat:model.JJ_DUO], [NSNumber numberWithFloat:model.JJ_DUO1], [NSNumber numberWithFloat:model.JJ_KONG],[NSNumber numberWithFloat:model.JJ_KONG1], [NSNumber numberWithFloat:model.JJ_KUAI], [NSNumber numberWithFloat:model.JJ_MAN],nil];
+                if (_accessoryMinValue > tempMin)
+                {
+                    _accessoryMinValue = tempMin;
+                }
+                if (_accessoryMaxValue < tempMax)
+                {
+                    _accessoryMaxValue = tempMax;
+                }
+            }
+        }
+            break;
+        default:
+            break;
+    }
+    
     float unitValue = (_mainMaxValue - _mainMinValue) / CGRectGetHeight(_mainRect);
     
     //转换主图开高收低的坐标点
@@ -249,6 +349,11 @@
     }
 }
 
+- (void)drawMainIndicatorWith:(KLineMainIndicatorType)mainIndicator
+{
+    
+}
+
 /**
  转换蜡烛图坐标点
  
@@ -356,7 +461,7 @@
     _startIndex -= offsetcount;
     _endIndex -= offsetcount;
     
-    [self drawWithMainType:self.currentMainType];
+    [self drawWithMainType:self.currentMainType mainIndicatorType:KLineMainIndicatorMA accessoryIndicatorType:KLineAccessoryIndicatorKDJ];
 }
 
 /**
@@ -374,7 +479,7 @@
     _startIndex += offsetcount;
     _endIndex += offsetcount;
     
-    [self drawWithMainType:self.currentMainType];
+    [self drawWithMainType:self.currentMainType mainIndicatorType:KLineMainIndicatorMA accessoryIndicatorType:KLineAccessoryIndicatorKDJ];
 }
 
 /**
@@ -464,6 +569,90 @@
                                     attributes:attribute
                                        context:nil];
     return rect;
+}
+
+/**
+ 返回参数列表中的最大值
+ 
+ @param value 参数列表
+ @return 返回最大值
+ */
+- (float)getMaxValue:(NSNumber *)value, ...NS_REQUIRES_NIL_TERMINATION
+{
+    //NS_REQUIRES_NIL_TERMINATION, 用于编译时非nil结尾的检查
+    float maxValue = (float)INT64_MIN;
+    
+    va_list args;
+    
+    va_start(args, value);
+    
+    if(value)
+    {
+        NSNumber * valueNum = @0.f;
+        if(isnan([value floatValue])) value = @0.f;
+        maxValue = [value floatValue];
+        while(1)
+        {
+            valueNum = va_arg(args, NSNumber *);
+            if(isnan([valueNum floatValue])) valueNum = @0.f;
+            if(valueNum == nil)
+            {
+                break;
+            }else
+            {
+                if(([valueNum floatValue] > maxValue) && ([valueNum floatValue] > 0.f))
+                {
+                    maxValue = [valueNum floatValue];
+                }
+            }
+            
+        }
+    }
+    
+    va_end(args);
+    return maxValue;
+}
+
+/**
+ 返回参数列表中的最小值
+ 
+ @param value 参数列表
+ @return 返回最小值
+ */
+- (float)getMinValue:(NSNumber *)value, ...NS_REQUIRES_NIL_TERMINATION
+{
+    //NS_REQUIRES_NIL_TERMINATION, 用于编译时非nil结尾的检查
+    float minValue = (float)INT64_MAX;
+    
+    va_list args;
+    
+    va_start(args, value);
+    
+    
+    if(value)
+    {
+        NSNumber * valueNum = @0.f;
+        if(isnan([value floatValue])) value = @0.f;
+        minValue = [value floatValue];
+        while(1)
+        {
+            valueNum = va_arg(args, NSNumber *);
+            if(isnan([valueNum floatValue])) valueNum = @0.f;
+            if(valueNum == nil)
+            {
+                break;
+            }else
+            {
+                if(([valueNum floatValue] < minValue) && ([valueNum floatValue] > 0.f))
+                {
+                    minValue = [valueNum floatValue];
+                }
+            }
+        }
+    }
+    
+    va_end(args);
+    return minValue;
 }
 
 - (CAShapeLayer *)crossViewLayer

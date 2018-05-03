@@ -52,7 +52,7 @@ static float kLineGlobalOffset = 0.f;
     _kLineView.kLineModelArr = [YKKlineOriginalModel getKLineModelArr];
     [self kLineViewAddGesture];
     
-    [_kLineView drawWithMainType:KLineMainCandle];
+    [_kLineView drawWithMainType:KLineMainCandle mainIndicatorType:KLineMainIndicatorMA accessoryIndicatorType:KLineAccessoryIndicatorKDJ];
 }
 
 /**
